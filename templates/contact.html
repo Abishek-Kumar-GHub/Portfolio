@@ -1,0 +1,218 @@
+
+<!-- templates/contact.html -->
+{% extends "base.html" %}
+
+{% block title %}Contact - Abishek Kumar{% endblock %}
+
+{% block content %}
+<div class="space-y-8">
+    <div class="text-center">
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">Get In Touch</h1>
+        <p class="text-xl text-gray-600 mb-8">Let's connect and discuss opportunities in cybersecurity and technology</p>
+    </div>
+
+    <!-- Contact Information -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Contact Details -->
+        <div class="bg-white rounded-2xl p-8 shadow-lg">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h2>
+            <div class="space-y-4">
+                <div class="flex items-center gap-4 p-4 bg-blue-50 rounded-lg">
+                    <i class="fas fa-envelope text-2xl text-blue-600"></i>
+                    <div>
+                        <h3 class="font-semibold text-gray-800">Email</h3>
+                        <a href="mailto:{{ contact_info.email }}" class="text-blue-600 hover:underline">
+                            {{ contact_info.email }}
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-4 p-4 bg-green-50 rounded-lg">
+                    <i class="fas fa-phone text-2xl text-green-600"></i>
+                    <div>
+                        <h3 class="font-semibold text-gray-800">Phone</h3>
+                        <a href="tel:{{ contact_info.phone }}" class="text-green-600 hover:underline">
+                            {{ contact_info.phone }}
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-4 p-4 bg-purple-50 rounded-lg">
+                    <i class="fas fa-map-marker-alt text-2xl text-purple-600"></i>
+                    <div>
+                        <h3 class="font-semibold text-gray-800">Location</h3>
+                        <p class="text-purple-600">{{ contact_info.location }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="mt-8">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Connect With Me</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <a href="{{ contact_info.linkedin }}" target="_blank" 
+                       class="flex items-center justify-center gap-2 p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        <i class="fab fa-linkedin"></i>
+                        LinkedIn
+                    </a>
+                    <a href="{{ contact_info.github }}" target="_blank" 
+                       class="flex items-center justify-center gap-2 p-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                    <a href="{{ contact_info.medium }}" target="_blank" 
+                       class="flex items-center justify-center gap-2 p-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+                        <i class="fab fa-medium"></i>
+                        Medium
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="bg-white rounded-2xl p-8 shadow-lg">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Send a Message</h2>
+            <form class="space-y-4" onsubmit="handleFormSubmit(event)">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                    <input type="text" id="name" name="name" required
+                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+                
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input type="email" id="email" name="email" required
+                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+                
+                <div>
+                    <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                    <input type="text" id="subject" name="subject" required
+                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+                
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                    <textarea id="message" name="message" rows="5" required
+                              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                </div>
+                
+                <button type="submit" 
+                        class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                    <i class="fas fa-paper-plane mr-2"></i>
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="bg-white rounded-2xl p-8 shadow-lg">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">Professional Experience</h2>
+        <div class="space-y-8">
+            {% for exp in experience %}
+            <div class="flex flex-col md:flex-row gap-6 p-6 border border-gray-200 rounded-xl hover:border-blue-300 transition-colors">
+                <div class="md:w-1/4">
+                    <div class="text-center md:text-left">
+                        {% if 'ISRO' in exp.company %}
+                        <div class="w-16 h-16 mx-auto md:mx-0 mb-3 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white font-bold">
+                            <i class="fas fa-rocket text-xl"></i>
+                        </div>
+                        {% else %}
+                        <div class="w-16 h-16 mx-auto md:mx-0 mb-3 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">
+                            <i class="fas fa-building text-xl"></i>
+                        </div>
+                        {% endif %}
+                        <div class="text-sm text-gray-500">{{ exp.duration }}</div>
+                    </div>
+                </div>
+                
+                <div class="md:w-3/4">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">{{ exp.role }}</h3>
+                    <p class="text-blue-600 font-medium mb-3">{{ exp.company }}</p>
+                    <p class="text-gray-700 leading-relaxed">{{ exp.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Availability Status -->
+    <section class="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 text-center">
+        <div class="max-w-2xl mx-auto">
+            <div class="flex items-center justify-center mb-4">
+                <div class="w-4 h-4 bg-green-500 rounded-full animate-pulse mr-3"></div>
+                <h2 class="text-2xl font-bold text-gray-800">Available for Opportunities</h2>
+            </div>
+            <p class="text-gray-600 mb-6">
+                I'm currently open to new opportunities in cybersecurity, cloud computing, and full-stack development. 
+                Let's discuss how my skills can contribute to your organization's success.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="bg-white px-4 py-2 rounded-full text-sm font-medium text-gray-700 shadow-sm">
+                    Cybersecurity Analyst
+                </span>
+                <span class="bg-white px-4 py-2 rounded-full text-sm font-medium text-gray-700 shadow-sm">
+                    Cloud Security Engineer
+                </span>
+                <span class="bg-white px-4 py-2 rounded-full text-sm font-medium text-gray-700 shadow-sm">
+                    Full-Stack Developer
+                </span>
+                <span class="bg-white px-4 py-2 rounded-full text-sm font-medium text-gray-700 shadow-sm">
+                    Research Associate
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="text-center bg-white rounded-2xl p-8 shadow-lg">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">Let's Work Together</h2>
+        <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+            Whether you're looking for a cybersecurity expert, a skilled developer, or a research collaborator, 
+            I'm excited to contribute to innovative projects and make a meaningful impact.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="mailto:{{ contact_info.email }}" 
+               class="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                <i class="fas fa-envelope"></i>
+                Email Me
+            </a>
+            <a href="{{ contact_info.linkedin }}" target="_blank"
+               class="inline-flex items-center justify-center gap-2 bg-blue-800 text-white px-8 py-3 rounded-lg hover:bg-blue-900 transition-colors font-medium">
+                <i class="fab fa-linkedin"></i>
+                Connect on LinkedIn
+            </a>
+            <button onclick="window.print()" 
+                    class="inline-flex items-center justify-center gap-2 bg-gray-600 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors font-medium">
+                <i class="fas fa-download"></i>
+                Download Resume
+            </button>
+        </div>
+    </section>
+</div>
+
+<script>
+function handleFormSubmit(event) {
+    event.preventDefault();
+    
+    const formData = new FormData(event.target);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const subject = formData.get('subject');
+    const message = formData.get('message');
+    
+    // Create mailto link
+    const mailtoLink = `mailto:abishek.techy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success message
+    alert('Thank you for your message! Your email client should open shortly.');
+    
+    // Reset form
+    event.target.reset();
+}
+</script>
+{% endblock %}

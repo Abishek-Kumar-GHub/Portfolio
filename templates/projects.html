@@ -1,0 +1,146 @@
+
+<!-- templates/projects.html -->
+{% extends "base.html" %}
+
+{% block title %}Projects - Abishek Kumar{% endblock %}
+
+{% block content %}
+<div class="space-y-8">
+    <div class="text-center">
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">My Projects</h1>
+        <p class="text-xl text-gray-600 mb-8">A showcase of my development and cybersecurity projects</p>
+    </div>
+
+    <!-- Project Categories Filter -->
+    <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <button onclick="filterProjects('all')" class="filter-btn active bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors">
+            All Projects
+        </button>
+        <button onclick="filterProjects('Web Development')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors">
+            Web Development
+        </button>
+        <button onclick="filterProjects('Cybersecurity')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors">
+            Cybersecurity
+        </button>
+        <button onclick="filterProjects('IoT')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors">
+            IoT
+        </button>
+        <button onclick="filterProjects('Machine Learning')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors">
+            Machine Learning
+        </button>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {% for project in projects %}
+        <div class="project-card bg-white rounded-2xl p-6 shadow-lg card-hover" data-category="{{ project.category }}">
+            <div class="flex items-center justify-between mb-4">
+                <span class="category-badge px-3 py-1 rounded-full text-sm font-medium
+                    {% if project.category == 'Web Development' %}bg-blue-100 text-blue-800
+                    {% elif project.category == 'Cybersecurity' %}bg-red-100 text-red-800
+                    {% elif project.category == 'IoT' %}bg-green-100 text-green-800
+                    {% elif project.category == 'Machine Learning' %}bg-purple-100 text-purple-800
+                    {% elif project.category == 'Data Science' %}bg-yellow-100 text-yellow-800
+                    {% endif %}">
+                    {{ project.category }}
+                </span>
+                <a href="{{ project.github }}" target="_blank" class="text-gray-400 hover:text-blue-600 transition-colors">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+            </div>
+            
+            <h3 class="text-xl font-bold text-gray-800 mb-3">{{ project.title }}</h3>
+            <p class="text-gray-600 mb-4 leading-relaxed">{{ project.description }}</p>
+            
+            <div class="flex flex-wrap gap-2 mb-4">
+                {% for tech in project.tech %}
+                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">{{ tech }}</span>
+                {% endfor %}
+            </div>
+            
+            <div class="flex items-center justify-between">
+                <a href="{{ project.github }}" target="_blank" 
+                   class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium">
+                    <i class="fab fa-github"></i>
+                    View on GitHub
+                </a>
+                <button onclick="showProjectDetails('{{ project.title }}')" 
+                        class="text-gray-600 hover:text-blue-600 transition-colors">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Featured Project Spotlight -->
+    <section class="bg-white rounded-2xl p-8 shadow-lg mt-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Featured Project</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">ISRO Visualization Application</h3>
+                <p class="text-gray-600 mb-6">
+                    A comprehensive Django-based web application developed during my internship at ISRO. 
+                    This project manages SSM-data and generates dynamic visualizations based on user-specified 
+                    date ranges, enhanced with robust security features and data management practices.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Python</span>
+                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Django</span>
+                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Data Visualization</span>
+                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Security</span>
+                </div>
+                <a href="https://github.com/Abishek-Kumar-GHub/ISRO-Vizualization-App" target="_blank"
+                   class="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                    <i class="fab fa-github"></i>
+                    Explore Project
+                </a>
+            </div>
+            <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-xl">
+                <div class="text-center">
+                    <i class="fas fa-rocket text-6xl text-blue-600 mb-4"></i>
+                    <h4 class="text-xl font-semibold text-gray-800">ISRO Collaboration</h4>
+                    <p class="text-gray-600 mt-2">Professional internship project with India's space research organization</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+function filterProjects(category) {
+    const cards = document.querySelectorAll('.project-card');
+    const buttons = document.querySelectorAll('.filter-btn');
+    
+    // Update button states
+    buttons.forEach(btn => {
+        btn.classList.remove('active', 'bg-blue-600', 'text-white');
+        btn.classList.add('bg-gray-200', 'text-gray-700');
+    });
+    
+    event.target.classList.remove('bg-gray-200', 'text-gray-700');
+    event.target.classList.add('active', 'bg-blue-600', 'text-white');
+    
+    // Filter projects
+    cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'block';
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100);
+        } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                card.style.display = 'none';
+            }, 300);
+        }
+    });
+}
+
+function showProjectDetails(projectTitle) {
+    alert(`More details about "${projectTitle}" coming soon! Click GitHub link to view the repository.`);
+}
+</script>
+{% endblock %}

@@ -1,0 +1,118 @@
+
+<!-- templates/about.html -->
+{% extends "base.html" %}
+
+{% block title %}About Me - Abishek Kumar{% endblock %}
+
+{% block content %}
+<div class="space-y-12">
+    <!-- Hero Section -->
+    <section class="gradient-bg rounded-3xl p-12 text-white text-center">
+        <div class="max-w-4xl mx-auto">
+            <div class="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden shadow-xl relative flex items-center justify-center bg-white text-gray-800 font-bold text-4xl">
+                <!-- Fallback initials -->
+                AK
+                <!-- Profile image -->
+                <img src="{{ url_for('static', filename='images/Abishek.jpeg') }}"
+                    alt="Abishek Kumar"
+                    class="absolute inset-0 w-full h-full object-cover">
+            </div>
+            <h1 class="text-5xl font-bold mb-6">Abishek Kumar</h1>
+            <p class="text-xl mb-8 opacity-90">Computer Applications Graduate | Cybersecurity & Cloud Computing Specialist</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">Python Developer</span>
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">Cybersecurity Researcher</span>
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">Cloud Security Expert</span>
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">Full Stack Developer</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Content -->
+    <section class="bg-white rounded-2xl p-8 shadow-lg">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Professional Summary</h2>
+        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+            I am a computer applications graduate with specialization in cyber security and cloud computing, 
+            seeking to apply my extensive academic background and practical experience in an organisation with 
+            an innovative vision. I am looking forward to contributing to a dynamic team and supporting research 
+            and development efforts in cutting-edge technologies.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="text-center p-6 bg-blue-50 rounded-xl">
+                <i class="fas fa-envelope text-3xl text-blue-600 mb-3"></i>
+                <p class="text-gray-600">abishek.techy@gmail.com</p>
+            </div>
+            <div class="text-center p-6 bg-green-50 rounded-xl">
+                <i class="fas fa-phone text-3xl text-green-600 mb-3"></i>
+                <p class="text-gray-600">+91 6380138198</p>
+            </div>
+            <div class="text-center p-6 bg-purple-50 rounded-xl">
+                <i class="fas fa-map-marker-alt text-3xl text-purple-600 mb-3"></i>
+                <p class="text-gray-600">Bengaluru, Karnataka</p>
+            </div>
+            <div class="text-center p-6 bg-yellow-50 rounded-xl">
+                <i class="fab fa-linkedin text-3xl text-blue-700 mb-3"></i>
+                <p class="text-gray-600">LinkedIn Profile</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Overview -->
+    <section class="bg-white rounded-2xl p-8 shadow-lg">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Core Competencies</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="p-6 border border-gray-200 rounded-xl hover:border-blue-300 transition-colors">
+                <i class="fas fa-shield-alt text-3xl text-red-600 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-3">Cybersecurity</h3>
+                <p class="text-gray-600">Vulnerability analysis, API security, penetration testing, and security research</p>
+            </div>
+            <div class="p-6 border border-gray-200 rounded-xl hover:border-blue-300 transition-colors">
+                <i class="fas fa-cloud text-3xl text-blue-600 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-3">Cloud Computing</h3>
+                <p class="text-gray-600">AWS services, Docker, Kubernetes, and cloud security implementations</p>
+            </div>
+            <div class="p-6 border border-gray-200 rounded-xl hover:border-blue-300 transition-colors">
+                <i class="fas fa-code text-3xl text-green-600 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-3">Full Stack Development</h3>
+                <p class="text-gray-600">Python, Django, Flask, React, and modern web technologies</p>
+            </div>
+            <div class="p-6 border border-gray-200 rounded-xl hover:border-blue-300 transition-colors">
+                <i class="fas fa-robot text-3xl text-purple-600 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-3">Machine Learning</h3>
+                <p class="text-gray-600">TensorFlow, data analysis, and predictive modeling</p>
+            </div>
+            <div class="p-6 border border-gray-200 rounded-xl hover:border-blue-300 transition-colors">
+                <i class="fas fa-microchip text-3xl text-orange-600 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-3">IoT Development</h3>
+                <p class="text-gray-600">Arduino, ESP32, sensor integration, and IoT system design</p>
+            </div>
+            <div class="p-6 border border-gray-200 rounded-xl hover:border-blue-300 transition-colors">
+                <i class="fas fa-search text-3xl text-indigo-600 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-3">Research</h3>
+                <p class="text-gray-600">Academic research, technical writing, and knowledge sharing</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="bg-white rounded-2xl p-6 shadow-lg text-center card-hover">
+            <div class="text-3xl font-bold text-blue-600 mb-2">6+</div>
+            <div class="text-gray-600">Major Projects</div>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-lg text-center card-hover">
+            <div class="text-3xl font-bold text-green-600 mb-2">9.3</div>
+            <div class="text-gray-600">Master's CGPA</div>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-lg text-center card-hover">
+            <div class="text-3xl font-bold text-purple-600 mb-2">4+</div>
+            <div class="text-gray-600">Research Papers</div>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-lg text-center card-hover">
+            <div class="text-3xl font-bold text-red-600 mb-2">2</div>
+            <div class="text-gray-600">Internships</div>
+        </div>
+    </section>
+</div>
+{% endblock %}
