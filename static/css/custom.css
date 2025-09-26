@@ -80,6 +80,10 @@ body {
     font-family: 'Mazzard SoftM Italic', Arial, sans-serif;
 }
 
+#mobile-menu {
+    font-family: 'Mazzard SoftM Italic', Arial, sans-serif;
+}
+
 /* Custom animations */
 @keyframes fadeInUp {
     from {
