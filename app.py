@@ -56,7 +56,7 @@ def projects():
             'title': 'Ransome-Flask',
             'description': 'Educational Flask-based ransomware simulation demonstrating encryption/decryption mechanics in controlled environment.',
             'tech': ['Python', 'Flask', 'Cryptography', 'Security'],
-            'github': 'https://github.com/Abishek-Kumar-GHub',
+            'github': 'https://github.com/Abishek-Kumar-GHub/Ransome-Flask',
             'category': 'Cybersecurity'
         }
     ]

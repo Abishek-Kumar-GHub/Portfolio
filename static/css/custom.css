@@ -25,10 +25,28 @@ html {
     scroll-behavior: smooth;
 }
 
-body {
-    font-family: 'Inter', sans-serif;
+@font-face {
+    font-family: 'Mazzard SoftM Light';
+    src: url('../fonts/mazzard-soft-font-1758841782-0/MazzardSoftM-Light.otf') format('opentype');
+    font-weight: 500; /* Medium weight */
+    font-style: normal;
 }
 
+@font-face {
+    font-family: 'Mazzard SoftM Italic';
+    src: url('../fonts/mazzard-soft-font-1758841782-0/MazzardSoftM-LightItalic.otf') format('opentype');
+    font-weight: 500; /* Medium weight */
+    font-style: italic;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-family: 'Mazzard SoftM Light', Arial, sans-serif;
+}
+
+#navigation-bar {
+    font-family: 'Mazzard SoftM Italic', Arial, sans-serif;
+}
 
 /* Custom animations */
 @keyframes fadeInUp {
@@ -73,6 +91,7 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
 
 
 
