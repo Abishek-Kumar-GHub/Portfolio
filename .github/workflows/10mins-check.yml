@@ -1,0 +1,16 @@
+# .github/workflows/daily-render-ping.yml
+name: Render Ping
+
+on:
+  schedule:
+    # Runs every 10 minutes
+    - cron: '*/10 * * * *'
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  curl-website:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping Render App
+        run: curl -I https://abishek-portfolio-jnkn.onrender.com/
