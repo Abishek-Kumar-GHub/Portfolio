@@ -1,18 +1,20 @@
-
 <!-- templates/projects.html -->
 {% extends "base.html" %}
 
 {% block title %}Projects - Abishek Kumar{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+
 <div class="space-y-8">
-    <div class="text-center">
+    <!-- Page Header -->
+    <div class="text-center scroll-reveal">
         <h1 class="text-4xl font-bold text-gray-800 mb-4">My Projects</h1>
         <p class="text-xl text-gray-600 mb-8">A showcase of my development and cybersecurity projects</p>
     </div>
 
     <!-- Project Categories Filter -->
-    <div class="flex flex-wrap justify-center gap-4 mb-8">
+    <div class="flex flex-wrap justify-center gap-4 mb-8 scroll-reveal">
         <button onclick="filterProjects('all')" class="filter-btn active bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors">
             All Projects
         </button>
@@ -33,7 +35,7 @@
     <!-- Projects Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {% for project in projects %}
-        <div class="project-card bg-white rounded-2xl p-6 shadow-lg card-hover" data-category="{{ project.category }}">
+        <div class="project-card bg-white rounded-2xl p-6 shadow-lg card-hover scroll-reveal" data-category="{{ project.category }}">
             <div class="flex items-center justify-between mb-4">
                 <span class="category-badge px-3 py-1 rounded-full text-sm font-medium
                     {% if project.category == 'Web Development' %}bg-blue-100 text-blue-800
@@ -74,10 +76,10 @@
     </div>
 
     <!-- Featured Project Spotlight -->
-    <section class="bg-white rounded-2xl p-8 shadow-lg mt-12">
+    <section class="bg-white rounded-2xl p-8 shadow-lg mt-12 scroll-reveal">
         <h2 class="text-3xl font-bold text-gray-800 mb-6">Featured Project</h2>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div>
+            <div class="scroll-reveal">
                 <h3 class="text-2xl font-bold text-blue-600 mb-4">ISRO Visualization Application</h3>
                 <p class="text-gray-600 mb-6">
                     A comprehensive Django-based web application developed during my internship at ISRO. 
@@ -96,7 +98,7 @@
                     Explore Project
                 </a>
             </div>
-            <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-xl">
+            <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-xl scroll-reveal">
                 <div class="text-center">
                     <i class="fas fa-rocket text-6xl text-blue-600 mb-4"></i>
                     <h4 class="text-xl font-semibold text-gray-800">ISRO Collaboration</h4>
@@ -108,36 +110,6 @@
 </div>
 
 <script>
-function filterProjects(category) {
-    const cards = document.querySelectorAll('.project-card');
-    const buttons = document.querySelectorAll('.filter-btn');
-    
-    // Update button states
-    buttons.forEach(btn => {
-        btn.classList.remove('active', 'bg-blue-600', 'text-white');
-        btn.classList.add('bg-gray-200', 'text-gray-700');
-    });
-    
-    event.target.classList.remove('bg-gray-200', 'text-gray-700');
-    event.target.classList.add('active', 'bg-blue-600', 'text-white');
-    
-    // Filter projects
-    cards.forEach(card => {
-        if (category === 'all' || card.dataset.category === category) {
-            card.style.display = 'block';
-            setTimeout(() => {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }, 100);
-        } else {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                card.style.display = 'none';
-            }, 300);
-        }
-    });
-}
 
 function showProjectDetails(projectTitle) {
     alert(`More details about "${projectTitle}" coming soon! Click GitHub link to view the repository.`);

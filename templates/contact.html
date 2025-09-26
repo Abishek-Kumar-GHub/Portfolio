@@ -1,12 +1,13 @@
-
 <!-- templates/contact.html -->
 {% extends "base.html" %}
 
 {% block title %}Contact - Abishek Kumar{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
 <div class="space-y-8">
-    <div class="text-center">
+
+    <div class="text-center scroll-reveal">
         <h1 class="text-4xl font-bold text-gray-800 mb-4">Get In Touch</h1>
         <p class="text-xl text-gray-600 mb-8">Let's connect and discuss opportunities in cybersecurity and technology</p>
     </div>
@@ -14,10 +15,10 @@
     <!-- Contact Information -->
     <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Contact Details -->
-        <div class="bg-white rounded-2xl p-8 shadow-lg">
+        <div class="bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
             <h2 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h2>
             <div class="space-y-4">
-                <div class="flex items-center gap-4 p-4 bg-blue-50 rounded-lg">
+                <div class="flex items-center gap-4 p-4 bg-blue-50 rounded-lg scroll-reveal">
                     <i class="fas fa-envelope text-2xl text-blue-600"></i>
                     <div>
                         <h3 class="font-semibold text-gray-800">Email</h3>
@@ -27,7 +28,7 @@
                     </div>
                 </div>
                 
-                <div class="flex items-center gap-4 p-4 bg-green-50 rounded-lg">
+                <div class="flex items-center gap-4 p-4 bg-green-50 rounded-lg scroll-reveal">
                     <i class="fas fa-phone text-2xl text-green-600"></i>
                     <div>
                         <h3 class="font-semibold text-gray-800">Phone</h3>
@@ -37,7 +38,7 @@
                     </div>
                 </div>
                 
-                <div class="flex items-center gap-4 p-4 bg-purple-50 rounded-lg">
+                <div class="flex items-center gap-4 p-4 bg-purple-50 rounded-lg scroll-reveal">
                     <i class="fas fa-map-marker-alt text-2xl text-purple-600"></i>
                     <div>
                         <h3 class="font-semibold text-gray-800">Location</h3>
@@ -47,7 +48,7 @@
             </div>
 
             <!-- Social Links -->
-            <div class="mt-8">
+            <div class="mt-8 scroll-reveal">
                 <h3 class="text-lg font-semibold text-gray-800 mb-4">Connect With Me</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <a href="{{ contact_info.linkedin }}" target="_blank" 
@@ -70,7 +71,7 @@
         </div>
 
         <!-- Contact Form -->
-        <div class="bg-white rounded-2xl p-8 shadow-lg">
+        <div class="bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
             <h2 class="text-2xl font-bold text-gray-800 mb-6">Send a Message</h2>
             <form class="space-y-4" onsubmit="handleFormSubmit(event)">
                 <div>
@@ -107,11 +108,11 @@
     </section>
 
     <!-- Experience Section -->
-    <section class="bg-white rounded-2xl p-8 shadow-lg">
+    <section class="bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
         <h2 class="text-3xl font-bold text-gray-800 mb-8">Professional Experience</h2>
         <div class="space-y-8">
             {% for exp in experience %}
-            <div class="flex flex-col md:flex-row gap-6 p-6 border border-gray-200 rounded-xl hover:border-blue-300 transition-colors">
+            <div class="flex flex-col md:flex-row gap-6 p-6 border border-gray-200 rounded-xl hover:border-blue-300 transition-colors scroll-reveal">
                 <div class="md:w-1/4">
                     <div class="text-center md:text-left">
                         {% if 'ISRO' in exp.company %}
@@ -138,7 +139,7 @@
     </section>
 
     <!-- Availability Status -->
-    <section class="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 text-center">
+    <section class="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 text-center scroll-reveal">
         <div class="max-w-2xl mx-auto">
             <div class="flex items-center justify-center mb-4">
                 <div class="w-4 h-4 bg-green-500 rounded-full animate-pulse mr-3"></div>
@@ -149,16 +150,16 @@
                 Let's discuss how my skills can contribute to your organization's success.
             </p>
             <div class="flex flex-wrap justify-center gap-4">
-                <span class="bg-white px-4 py-2 rounded-full text-sm font-medium text-gray-700 shadow-sm">
+                <span class="bg-white px-4 py-2 rounded-full text-sm font-medium text-gray-700 shadow-sm scroll-reveal">
                     Cybersecurity Analyst
                 </span>
-                <span class="bg-white px-4 py-2 rounded-full text-sm font-medium text-gray-700 shadow-sm">
+                <span class="bg-white px-4 py-2 rounded-full text-sm font-medium text-gray-700 shadow-sm scroll-reveal">
                     Cloud Security Engineer
                 </span>
-                <span class="bg-white px-4 py-2 rounded-full text-sm font-medium text-gray-700 shadow-sm">
+                <span class="bg-white px-4 py-2 rounded-full text-sm font-medium text-gray-700 shadow-sm scroll-reveal">
                     Full-Stack Developer
                 </span>
-                <span class="bg-white px-4 py-2 rounded-full text-sm font-medium text-gray-700 shadow-sm">
+                <span class="bg-white px-4 py-2 rounded-full text-sm font-medium text-gray-700 shadow-sm scroll-reveal">
                     Research Associate
                 </span>
             </div>
@@ -166,7 +167,7 @@
     </section>
 
     <!-- Call to Action -->
-    <section class="text-center bg-white rounded-2xl p-8 shadow-lg">
+    <section class="text-center bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
         <h2 class="text-3xl font-bold text-gray-800 mb-4">Let's Work Together</h2>
         <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
             Whether you're looking for a cybersecurity expert, a skilled developer, or a research collaborator, 
@@ -174,17 +175,17 @@
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="mailto:{{ contact_info.email }}" 
-               class="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+               class="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium scroll-reveal">
                 <i class="fas fa-envelope"></i>
                 Email Me
             </a>
             <a href="{{ contact_info.linkedin }}" target="_blank"
-               class="inline-flex items-center justify-center gap-2 bg-blue-800 text-white px-8 py-3 rounded-lg hover:bg-blue-900 transition-colors font-medium">
+               class="inline-flex items-center justify-center gap-2 bg-blue-800 text-white px-8 py-3 rounded-lg hover:bg-blue-900 transition-colors font-medium scroll-reveal">
                 <i class="fab fa-linkedin"></i>
                 Connect on LinkedIn
             </a>
             <button onclick="window.print()" 
-                    class="inline-flex items-center justify-center gap-2 bg-gray-600 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors font-medium">
+                    class="inline-flex items-center justify-center gap-2 bg-gray-600 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors font-medium scroll-reveal">
                 <i class="fas fa-download"></i>
                 Download Resume
             </button>
@@ -202,17 +203,12 @@ function handleFormSubmit(event) {
     const subject = formData.get('subject');
     const message = formData.get('message');
     
-    // Create mailto link
     const mailtoLink = `mailto:abishek.techy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
-    
-    // Open email client
     window.location.href = mailtoLink;
     
-    // Show success message
     alert('Thank you for your message! Your email client should open shortly.');
-    
-    // Reset form
     event.target.reset();
 }
+
 </script>
 {% endblock %}

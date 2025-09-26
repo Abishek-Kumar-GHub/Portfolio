@@ -1,22 +1,23 @@
-
 <!-- templates/academics.html -->
 {% extends "base.html" %}
 
 {% block title %}Academics - Abishek Kumar{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
 <div class="space-y-8">
-    <div class="text-center">
+
+    <div class="text-center scroll-reveal">
         <h1 class="text-4xl font-bold text-gray-800 mb-4">Academic Background</h1>
         <p class="text-xl text-gray-600 mb-8">My educational journey in computer science and cybersecurity</p>
     </div>
 
     <!-- Education Timeline -->
-    <section class="bg-white rounded-2xl p-8 shadow-lg">
+    <section class="bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
         <h2 class="text-3xl font-bold text-gray-800 mb-8">Education</h2>
         <div class="space-y-8">
             {% for edu in education %}
-            <div class="flex flex-col md:flex-row gap-6 p-6 border border-gray-200 rounded-xl hover:border-blue-300 transition-colors">
+            <div class="flex flex-col md:flex-row gap-6 p-6 border border-gray-200 rounded-xl hover:border-blue-300 transition-colors scroll-reveal">
                 <div class="md:w-1/3">
                     <div class="text-center md:text-left">
                         {% if edu.cgpa == '9.3' %}
@@ -55,11 +56,11 @@
     </section>
 
     <!-- Skills Developed -->
-    <section class="bg-white rounded-2xl p-8 shadow-lg">
+    <section class="bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
         <h2 class="text-3xl font-bold text-gray-800 mb-8">Technical Skills Acquired</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             {% for category, skill_list in skills.items() %}
-            <div class="p-6 bg-gray-50 rounded-xl">
+            <div class="p-6 bg-gray-50 rounded-xl scroll-reveal">
                 <h3 class="text-xl font-semibold text-gray-800 mb-4">
                     <i class="fas fa-{% if 'Programming' in category %}code{% elif 'Tools' in category %}wrench{% elif 'Cloud' in category %}cloud{% else %}shield-alt{% endif %} mr-2 text-blue-600"></i>
                     {{ category }}
@@ -77,31 +78,31 @@
     </section>
 
     <!-- Academic Achievements -->
-    <section class="bg-white rounded-2xl p-8 shadow-lg">
+    <section class="bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
         <h2 class="text-3xl font-bold text-gray-800 mb-8">Academic Achievements & Learning Outcomes</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
+            <div class="scroll-reveal">
                 <h3 class="text-xl font-semibold text-gray-800 mb-6">
                     <i class="fas fa-trophy text-yellow-600 mr-2"></i>
                     Key Achievements
                 </h3>
                 <ul class="space-y-4">
-                    <li class="flex items-start gap-3">
+                    <li class="flex items-start gap-3 scroll-reveal">
                         <i class="fas fa-star text-blue-600 mt-1"></i>
                         <div>
                             <strong class="text-gray-800">Outstanding Academic Performance</strong>
                             <p class="text-gray-600 text-sm">Maintained 9.3 CGPA in Master's program with focus on advanced cybersecurity concepts</p>
                         </div>
                     </li>
-                    <li class="flex items-start gap-3">
+                    <li class="flex items-start gap-3 scroll-reveal">
                         <i class="fas fa-star text-blue-600 mt-1"></i>
                         <div>
                             <strong class="text-gray-800">Consistent Excellence</strong>
                             <p class="text-gray-600 text-sm">8.7 CGPA in Bachelor's degree with strong foundation in computer applications</p>
                         </div>
                     </li>
-                    <li class="flex items-start gap-3">
+                    <li class="flex items-start gap-3 scroll-reveal">
                         <i class="fas fa-star text-blue-600 mt-1"></i>
                         <div>
                             <strong class="text-gray-800">Specialized Knowledge</strong>
@@ -111,34 +112,34 @@
                 </ul>
             </div>
 
-            <div>
+            <div class="scroll-reveal">
                 <h3 class="text-xl font-semibold text-gray-800 mb-6">
                     <i class="fas fa-brain text-purple-600 mr-2"></i>
                     Skills Developed Through Academics
                 </h3>
                 <ul class="space-y-4">
-                    <li class="flex items-start gap-3">
+                    <li class="flex items-start gap-3 scroll-reveal">
                         <i class="fas fa-check-circle text-green-600 mt-1"></i>
                         <div>
                             <strong class="text-gray-800">Full-Stack Development</strong>
                             <p class="text-gray-600 text-sm">Modern web development with Angular, Django, and Flask frameworks</p>
                         </div>
                     </li>
-                    <li class="flex items-start gap-3">
+                    <li class="flex items-start gap-3 scroll-reveal">
                         <i class="fas fa-check-circle text-green-600 mt-1"></i>
                         <div>
                             <strong class="text-gray-800">Cybersecurity Analysis</strong>
                             <p class="text-gray-600 text-sm">Vulnerability assessment, penetration testing, and security implementation</p>
                         </div>
                     </li>
-                    <li class="flex items-start gap-3">
+                    <li class="flex items-start gap-3 scroll-reveal">
                         <i class="fas fa-check-circle text-green-600 mt-1"></i>
                         <div>
                             <strong class="text-gray-800">Cloud Architecture</strong>
                             <p class="text-gray-600 text-sm">AWS services, containerization, and cloud security best practices</p>
                         </div>
                     </li>
-                    <li class="flex items-start gap-3">
+                    <li class="flex items-start gap-3 scroll-reveal">
                         <i class="fas fa-check-circle text-green-600 mt-1"></i>
                         <div>
                             <strong class="text-gray-800">Research & Development</strong>
@@ -151,7 +152,7 @@
     </section>
 
     <!-- Learning Philosophy -->
-    <section class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8">
+    <section class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 scroll-reveal">
         <div class="text-center">
             <h2 class="text-3xl font-bold text-gray-800 mb-4">Learning Philosophy</h2>
             <p class="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -162,17 +163,17 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            <div class="text-center p-6 bg-white rounded-xl shadow-sm">
+            <div class="text-center p-6 bg-white rounded-xl shadow-sm scroll-reveal">
                 <i class="fas fa-lightbulb text-3xl text-yellow-600 mb-4"></i>
                 <h3 class="font-semibold text-gray-800 mb-2">Continuous Learning</h3>
                 <p class="text-gray-600 text-sm">Always exploring new technologies and methodologies</p>
             </div>
-            <div class="text-center p-6 bg-white rounded-xl shadow-sm">
+            <div class="text-center p-6 bg-white rounded-xl shadow-sm scroll-reveal">
                 <i class="fas fa-users text-3xl text-blue-600 mb-4"></i>
                 <h3 class="font-semibold text-gray-800 mb-2">Collaborative Growth</h3>
                 <p class="text-gray-600 text-sm">Learning through teamwork and knowledge sharing</p>
             </div>
-            <div class="text-center p-6 bg-white rounded-xl shadow-sm">
+            <div class="text-center p-6 bg-white rounded-xl shadow-sm scroll-reveal">
                 <i class="fas fa-rocket text-3xl text-purple-600 mb-4"></i>
                 <h3 class="font-semibold text-gray-800 mb-2">Practical Application</h3>
                 <p class="text-gray-600 text-sm">Applying theoretical knowledge to real-world projects</p>
@@ -180,4 +181,7 @@
         </div>
     </section>
 </div>
+
+<script>
+</script>
 {% endblock %}

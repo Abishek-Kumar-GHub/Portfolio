@@ -6,6 +6,14 @@
 .card-hover {
     transition: all 0.3s ease;
 }
+.gradient-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
 
 .card-hover:hover {
     transform: translateY(-5px);
@@ -16,6 +24,11 @@
 html {
     scroll-behavior: smooth;
 }
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
 
 /* Custom animations */
 @keyframes fadeInUp {
@@ -49,3 +62,17 @@ html {
         color: #333 !important;
     }
 }
+
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(10px); /* smaller movement */
+    transition: opacity 0.30s ease-out, transform 0.20s ease-out; /* faster */
+}
+
+.scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+

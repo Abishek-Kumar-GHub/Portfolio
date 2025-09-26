@@ -1,22 +1,23 @@
-
 <!-- templates/research.html -->
 {% extends "base.html" %}
 
 {% block title %}Research - Abishek Kumar{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
 <div class="space-y-8">
-    <div class="text-center">
+
+    <div class="text-center scroll-reveal">
         <h1 class="text-4xl font-bold text-gray-800 mb-4">Research & Publications</h1>
         <p class="text-xl text-gray-600 mb-8">My contributions to cybersecurity and technology research</p>
     </div>
 
     <!-- Research Projects -->
-    <section class="bg-white rounded-2xl p-8 shadow-lg">
+    <section class="bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
         <h2 class="text-3xl font-bold text-gray-800 mb-8">Academic Research Projects</h2>
         <div class="space-y-8">
             {% for project in research_projects %}
-            <div class="border-l-4 border-blue-500 pl-6 py-4">
+            <div class="border-l-4 border-blue-500 pl-6 py-4 scroll-reveal">
                 <h3 class="text-xl font-bold text-gray-800 mb-2">{{ project.title }}</h3>
                 <p class="text-blue-600 font-medium mb-2">{{ project.department }}</p>
                 <p class="text-gray-500 text-sm mb-4">{{ project.duration }}</p>
@@ -27,11 +28,11 @@
     </section>
 
     <!-- Publications -->
-    <section class="bg-white rounded-2xl p-8 shadow-lg">
+    <section class="bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
         <h2 class="text-3xl font-bold text-gray-800 mb-8">Medium Publications</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             {% for pub in publications %}
-            <div class="p-6 border border-gray-200 rounded-xl card-hover">
+            <div class="p-6 border border-gray-200 rounded-xl card-hover scroll-reveal">
                 <div class="flex items-center justify-between mb-4">
                     <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">
                         {{ pub.platform }}
@@ -51,30 +52,30 @@
     </section>
 
     <!-- Research Interests -->
-    <section class="bg-white rounded-2xl p-8 shadow-lg">
+    <section class="bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
         <h2 class="text-3xl font-bold text-gray-800 mb-8">Research Interests</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl text-center">
+            <div class="p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl text-center scroll-reveal">
                 <i class="fas fa-cloud-upload-alt text-3xl text-blue-600 mb-4"></i>
                 <h3 class="font-semibold text-gray-800">Cloud Security</h3>
             </div>
-            <div class="p-6 bg-gradient-to-br from-red-50 to-red-100 rounded-xl text-center">
+            <div class="p-6 bg-gradient-to-br from-red-50 to-red-100 rounded-xl text-center scroll-reveal">
                 <i class="fas fa-globe text-3xl text-red-600 mb-4"></i>
                 <h3 class="font-semibold text-gray-800">Web Application Security</h3>
             </div>
-            <div class="p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-xl text-center">
+            <div class="p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-xl text-center scroll-reveal">
                 <i class="fas fa-mobile-alt text-3xl text-green-600 mb-4"></i>
                 <h3 class="font-semibold text-gray-800">Mobile Security</h3>
             </div>
-            <div class="p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl text-center">
+            <div class="p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl text-center scroll-reveal">
                 <i class="fas fa-database text-3xl text-purple-600 mb-4"></i>
                 <h3 class="font-semibold text-gray-800">Database Forensics</h3>
             </div>
-            <div class="p-6 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl text-center">
+            <div class="p-6 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl text-center scroll-reveal">
                 <i class="fas fa-wifi text-3xl text-yellow-600 mb-4"></i>
                 <h3 class="font-semibold text-gray-800">IoT Security</h3>
             </div>
-            <div class="p-6 bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl text-center">
+            <div class="p-6 bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl text-center scroll-reveal">
                 <i class="fas fa-brain text-3xl text-indigo-600 mb-4"></i>
                 <h3 class="font-semibold text-gray-800">ML Security</h3>
             </div>
@@ -82,7 +83,7 @@
     </section>
 
     <!-- Research Impact -->
-    <section class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-8">
+    <section class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-8 scroll-reveal">
         <div class="text-center mb-8">
             <h2 class="text-3xl font-bold text-gray-800 mb-4">Research Impact</h2>
             <p class="text-gray-600 max-w-3xl mx-auto">
@@ -92,23 +93,27 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div class="text-center p-6 bg-white rounded-xl shadow-sm">
+            <div class="text-center p-6 bg-white rounded-xl shadow-sm scroll-reveal">
                 <div class="text-3xl font-bold text-blue-600 mb-2">3+</div>
                 <div class="text-gray-600">Research Projects</div>
             </div>
-            <div class="text-center p-6 bg-white rounded-xl shadow-sm">
+            <div class="text-center p-6 bg-white rounded-xl shadow-sm scroll-reveal">
                 <div class="text-3xl font-bold text-green-600 mb-2">4+</div>
                 <div class="text-gray-600">Published Articles</div>
             </div>
-            <div class="text-center p-6 bg-white rounded-xl shadow-sm">
+            <div class="text-center p-6 bg-white rounded-xl shadow-sm scroll-reveal">
                 <div class="text-3xl font-bold text-purple-600 mb-2">2+</div>
                 <div class="text-gray-600">Years Research</div>
             </div>
-            <div class="text-center p-6 bg-white rounded-xl shadow-sm">
+            <div class="text-center p-6 bg-white rounded-xl shadow-sm scroll-reveal">
                 <div class="text-3xl font-bold text-orange-600 mb-2">100+</div>
                 <div class="text-gray-600">Citations</div>
             </div>
         </div>
     </section>
 </div>
+
+<script>
+
+</script>
 {% endblock %}
