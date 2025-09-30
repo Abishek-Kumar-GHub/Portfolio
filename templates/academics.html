@@ -8,13 +8,13 @@
 <div class="space-y-8">
 
     <div class="text-center scroll-reveal">
-        <h1 class="text-4xl font-bold text-gray-800 mb-4">Academic Background</h1>
-        <p class="text-xl text-gray-600 mb-8">My educational journey in computer science and cybersecurity</p>
+        <h1 class="text-4xl font-bold text-gray-800 mb-4 dark:text-white">Academic Background</h1>
+        <p class="text-xl text-gray-600 mb-8 dark:text-white">My educational journey in computer science and cybersecurity</p>
     </div>
 
     <!-- Education Timeline -->
     <section class="bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
-        <h2 class="text-3xl font-bold text-gray-800 mb-8">Education</h2>
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 dark:text-white">Education</h2>
         <div class="space-y-8">
             {% for edu in education %}
             <div class="flex flex-col md:flex-row gap-6 p-6 border border-gray-200 rounded-xl hover:border-blue-300 transition-colors scroll-reveal">
@@ -29,23 +29,23 @@
                             BCA
                         </div>
                         {% endif %}
-                        <div class="text-sm text-gray-500">{{ edu.duration }}</div>
-                        <div class="text-lg font-bold text-blue-600">CGPA: {{ edu.cgpa }}</div>
+                        <div class="text-sm text-gray-500 dark:text-white">{{ edu.duration }}</div>
+                        <div class="text-lg font-bold text-blue-600 dark:text-blue-300 ">CGPA: {{ edu.cgpa }}</div>
                     </div>
                 </div>
                 
                 <div class="md:w-2/3">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">{{ edu.degree }}</h3>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 dark:text-blue-600">{{ edu.degree }}</h3>
                     {% if edu.specialization %}
-                    <p class="text-blue-600 font-medium mb-2">{{ edu.specialization }}</p>
+                    <p class="text-blue-600 font-medium mb-2 dark:text-blue-300">{{ edu.specialization }}</p>
                     {% endif %}
-                    <p class="text-gray-600 mb-4">{{ edu.institution }}</p>
+                    <p class="text-gray-600 mb-4 dark:text-white">{{ edu.institution }}</p>
                     
                     <div class="mt-4">
-                        <h4 class="font-semibold text-gray-800 mb-3">Key Coursework:</h4>
+                        <h4 class="font-semibold text-gray-800 mb-3 dark:text-white">Key Coursework:</h4>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
                             {% for course in edu.coursework %}
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-lg text-sm">{{ course }}</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-lg text-sm dark:bg-gray-700 dark:text-white">{{ course }}</span>
                             {% endfor %}
                         </div>
                     </div>
@@ -57,17 +57,17 @@
 
     <!-- Skills Developed -->
     <section class="bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
-        <h2 class="text-3xl font-bold text-gray-800 mb-8">Technical Skills Acquired</h2>
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 dark:text-white">Technical Skills Acquired</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             {% for category, skill_list in skills.items() %}
-            <div class="p-6 bg-gray-50 rounded-xl scroll-reveal">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+            <div class="p-6 bg-gray-50 rounded-xl dark:bg-gray-900 scroll-reveal">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4 dark:text-white">
                     <i class="fas fa-{% if 'Programming' in category %}code{% elif 'Tools' in category %}wrench{% elif 'Cloud' in category %}cloud{% else %}shield-alt{% endif %} mr-2 text-blue-600"></i>
                     {{ category }}
                 </h3>
                 <div class="flex flex-wrap gap-2">
                     {% for skill in skill_list %}
-                    <span class="bg-white text-gray-700 px-3 py-1 rounded-full text-sm border border-gray-200 hover:border-blue-300 transition-colors">
+                    <span class="bg-white text-gray-700 px-3 py-1 rounded-full text-sm border border-gray-200 hover:border-blue-300 transition-colors dark:bg-gray-800 dark:text-white">
                         {{ skill }}
                     </span>
                     {% endfor %}
@@ -79,11 +79,11 @@
 
     <!-- Academic Achievements -->
     <section class="bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
-        <h2 class="text-3xl font-bold text-gray-800 mb-8">Academic Achievements & Learning Outcomes</h2>
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 dark:text-white">Academic Achievements & Learning Outcomes</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="scroll-reveal">
-                <h3 class="text-xl font-semibold text-gray-800 mb-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-6 dark:text-white">
                     <i class="fas fa-trophy text-yellow-600 mr-2"></i>
                     Key Achievements
                 </h3>
@@ -91,59 +91,59 @@
                     <li class="flex items-start gap-3 scroll-reveal">
                         <i class="fas fa-star text-blue-600 mt-1"></i>
                         <div>
-                            <strong class="text-gray-800">Outstanding Academic Performance</strong>
-                            <p class="text-gray-600 text-sm">Maintained 9.3 CGPA in Master's program with focus on advanced cybersecurity concepts</p>
+                            <strong class="text-gray-800 dark:text-white">Outstanding Academic Performance</strong>
+                            <p class="text-gray-600 text-sm dark:text-white">Maintained 9.3 CGPA in Master's program with focus on advanced cybersecurity concepts</p>
                         </div>
                     </li>
                     <li class="flex items-start gap-3 scroll-reveal">
                         <i class="fas fa-star text-blue-600 mt-1"></i>
                         <div>
-                            <strong class="text-gray-800">Consistent Excellence</strong>
-                            <p class="text-gray-600 text-sm">8.7 CGPA in Bachelor's degree with strong foundation in computer applications</p>
+                            <strong class="text-gray-800 dark:text-white">Consistent Excellence</strong>
+                            <p class="text-gray-600 text-sm dark:text-white">8.7 CGPA in Bachelor's degree with strong foundation in computer applications</p>
                         </div>
                     </li>
                     <li class="flex items-start gap-3 scroll-reveal">
                         <i class="fas fa-star text-blue-600 mt-1"></i>
                         <div>
-                            <strong class="text-gray-800">Specialized Knowledge</strong>
-                            <p class="text-gray-600 text-sm">Expertise in cybersecurity and cloud computing through focused coursework</p>
+                            <strong class="text-gray-800 dark:text-white">Specialized Knowledge</strong>
+                            <p class="text-gray-600 text-sm dark:text-white">Expertise in cybersecurity and cloud computing through focused coursework</p>
                         </div>
                     </li>
                 </ul>
             </div>
 
             <div class="scroll-reveal">
-                <h3 class="text-xl font-semibold text-gray-800 mb-6">
-                    <i class="fas fa-brain text-purple-600 mr-2"></i>
+                <h3 class="text-xl font-semibold text-gray-800 mb-6 dark:text-white">
+                    <i class="fas fa-brain text-purple-600 mr-2 "></i>
                     Skills Developed Through Academics
                 </h3>
                 <ul class="space-y-4">
                     <li class="flex items-start gap-3 scroll-reveal">
                         <i class="fas fa-check-circle text-green-600 mt-1"></i>
                         <div>
-                            <strong class="text-gray-800">Full-Stack Development</strong>
-                            <p class="text-gray-600 text-sm">Modern web development with Angular, Django, and Flask frameworks</p>
+                            <strong class="text-gray-800 dark:text-white">Full-Stack Development</strong>
+                            <p class="text-gray-600 text-sm dark:text-white">Modern web development with Angular, Django, and Flask frameworks</p>
                         </div>
                     </li>
                     <li class="flex items-start gap-3 scroll-reveal">
                         <i class="fas fa-check-circle text-green-600 mt-1"></i>
                         <div>
-                            <strong class="text-gray-800">Cybersecurity Analysis</strong>
-                            <p class="text-gray-600 text-sm">Vulnerability assessment, penetration testing, and security implementation</p>
+                            <strong class="text-gray-800 dark:text-white">Cybersecurity Analysis</strong>
+                            <p class="text-gray-600 text-sm dark:text-white">Vulnerability assessment, penetration testing, and security implementation</p>
                         </div>
                     </li>
                     <li class="flex items-start gap-3 scroll-reveal">
                         <i class="fas fa-check-circle text-green-600 mt-1"></i>
                         <div>
-                            <strong class="text-gray-800">Cloud Architecture</strong>
-                            <p class="text-gray-600 text-sm">AWS services, containerization, and cloud security best practices</p>
+                            <strong class="text-gray-800 dark:text-white">Cloud Architecture</strong>
+                            <p class="text-gray-600 text-sm dark:text-white">AWS services, containerization, and cloud security best practices</p>
                         </div>
                     </li>
                     <li class="flex items-start gap-3 scroll-reveal">
                         <i class="fas fa-check-circle text-green-600 mt-1"></i>
                         <div>
-                            <strong class="text-gray-800">Research & Development</strong>
-                            <p class="text-gray-600 text-sm">Academic research methodologies and technical documentation</p>
+                            <strong class="text-gray-800 dark:text-white">Research & Development</strong>
+                            <p class="text-gray-600 text-sm dark:text-white">Academic research methodologies and technical documentation</p>
                         </div>
                     </li>
                 </ul>
@@ -152,10 +152,10 @@
     </section>
 
     <!-- Learning Philosophy -->
-    <section class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 scroll-reveal">
+    <section class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 scroll-reveal dark:from-gray-800 dark:to-gray-700">
         <div class="text-center">
-            <h2 class="text-3xl font-bold text-gray-800 mb-4">Learning Philosophy</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4 dark:text-white">Learning Philosophy</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto dark:text-white">
                 "Education is not just about acquiring knowledge, but about developing the ability to think critically, 
                 solve complex problems, and adapt to emerging technologies. My academic journey has been focused on 
                 building a strong foundation while staying current with industry trends and emerging cybersecurity challenges."
@@ -165,18 +165,18 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
             <div class="text-center p-6 bg-white rounded-xl shadow-sm scroll-reveal">
                 <i class="fas fa-lightbulb text-3xl text-yellow-600 mb-4"></i>
-                <h3 class="font-semibold text-gray-800 mb-2">Continuous Learning</h3>
-                <p class="text-gray-600 text-sm">Always exploring new technologies and methodologies</p>
+                <h3 class="font-semibold text-gray-800 mb-2 dark:text-white">Continuous Learning</h3>
+                <p class="text-gray-600 text-sm dark:text-white">Always exploring new technologies and methodologies</p>
             </div>
             <div class="text-center p-6 bg-white rounded-xl shadow-sm scroll-reveal">
                 <i class="fas fa-users text-3xl text-blue-600 mb-4"></i>
-                <h3 class="font-semibold text-gray-800 mb-2">Collaborative Growth</h3>
-                <p class="text-gray-600 text-sm">Learning through teamwork and knowledge sharing</p>
+                <h3 class="font-semibold text-gray-800 mb-2 dark:text-white">Collaborative Growth</h3>
+                <p class="text-gray-600 text-sm dark:text-white">Learning through teamwork and knowledge sharing</p>
             </div>
             <div class="text-center p-6 bg-white rounded-xl shadow-sm scroll-reveal">
                 <i class="fas fa-rocket text-3xl text-purple-600 mb-4"></i>
-                <h3 class="font-semibold text-gray-800 mb-2">Practical Application</h3>
-                <p class="text-gray-600 text-sm">Applying theoretical knowledge to real-world projects</p>
+                <h3 class="font-semibold text-gray-800 mb-2 dark:text-white">Practical Application</h3>
+                <p class="text-gray-600 text-sm dark:text-white">Applying theoretical knowledge to real-world projects</p>
             </div>
         </div>
     </section>

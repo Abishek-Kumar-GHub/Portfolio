@@ -9,40 +9,45 @@
 <div class="space-y-8">
     <!-- Page Header -->
     <div class="text-center scroll-reveal">
-        <h1 class="text-4xl font-bold text-gray-800 mb-4">My Projects</h1>
+        <h1 class="text-4xl font-bold text-gray-800 mb-4 dark:text-white">My Projects</h1>
         <p class="text-xl text-gray-600 mb-8">A showcase of my development and cybersecurity projects</p>
     </div>
 
     <!-- Project Categories Filter -->
     <div class="flex flex-wrap justify-center gap-4 mb-8 scroll-reveal">
-        <button onclick="filterProjects('all')" class="filter-btn active bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors">
+        <button onclick="filterProjects('all')" class="filter-btn active bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors dark:bg-gray-800 dark:text-white dark:hover:bg-blue-900 dark:active:bg-blue-300 dark:active:text-black">
             All Projects
         </button>
-        <button onclick="filterProjects('Web Development')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors">
+        <button onclick="filterProjects('Web Development')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors dark:bg-gray-800 dark:text-white dark:hover:bg-blue-900 dark:active:bg-blue-300 dark:active:text-black">
             Web Development
         </button>
-        <button onclick="filterProjects('Cybersecurity')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors">
+        <button onclick="filterProjects('Cybersecurity')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors dark:bg-gray-800 dark:text-white dark:hover:bg-blue-900 dark:active:bg-blue-300 dark:active:text-black">
             Cybersecurity
         </button>
-        <button onclick="filterProjects('IoT')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors">
+        <button onclick="filterProjects('IoT')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors dark:bg-gray-800 dark:text-white dark:hover:bg-blue-900 dark:active:bg-blue-300 dark:active:text-black">
             IoT
         </button>
-        <button onclick="filterProjects('Machine Learning')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors">
+        <button onclick="filterProjects('Full Stack Development')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors dark:bg-gray-800 dark:text-white dark:hover:bg-blue-900 dark:active:bg-blue-300 dark:active:text-black">
+            Full Stack Development
+        </button>
+        <button onclick="filterProjects('Machine Learning')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors dark:bg-gray-800 dark:text-white dark:hover:bg-blue-900 dark:active:bg-blue-300 dark:active:text-black">
             Machine Learning
         </button>
     </div>
+
 
     <!-- Projects Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {% for project in projects %}
         <div class="project-card bg-white rounded-2xl p-6 shadow-lg card-hover scroll-reveal" data-category="{{ project.category }}">
             <div class="flex items-center justify-between mb-4">
-                <span class="category-badge px-3 py-1 rounded-full text-sm font-medium
-                    {% if project.category == 'Web Development' %}bg-blue-100 text-blue-800
-                    {% elif project.category == 'Cybersecurity' %}bg-red-100 text-red-800
-                    {% elif project.category == 'IoT' %}bg-green-100 text-green-800
-                    {% elif project.category == 'Machine Learning' %}bg-purple-100 text-purple-800
-                    {% elif project.category == 'Data Science' %}bg-yellow-100 text-yellow-800
+                <span class="category-badge px-3 py-1 rounded-full text-sm font-medium dark:bg-gray-700 
+                    {% if project.category == 'Web Development' %}bg-blue-100 text-blue-800 dark:text-blue-300
+                    {% elif project.category == 'Cybersecurity' %}bg-red-100 text-red-800 dark:text-red-300
+                    {% elif project.category == 'IoT' %}bg-green-100 text-green-800 dark:text-green-300
+                    {% elif project.category == 'Machine Learning' %}bg-purple-100 text-purple-800 dark:text-purple-300
+                    {% elif project.category == 'Data Science' %}bg-yellow-100 text-yellow-800 dark:text-yellow-300
+                    {% elif project.category == 'Full Stack Development' %}bg-orange-100 text-orange-800 dark:text-orange-300
                     {% endif %}">
                     {{ project.category }}
                 </span>
@@ -51,12 +56,12 @@
                 </a>
             </div>
             
-            <h3 class="text-xl font-bold text-gray-800 mb-3">{{ project.title }}</h3>
-            <p class="text-gray-600 mb-4 leading-relaxed">{{ project.description }}</p>
+            <h3 class="text-xl font-bold text-gray-800 mb-3 dark:text-white">{{ project.title }}</h3>
+            <p class="text-gray-600 mb-4 leading-relaxed dark:text-white">{{ project.description }}</p>
             
             <div class="flex flex-wrap gap-2 mb-4">
                 {% for tech in project.tech %}
-                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">{{ tech }}</span>
+                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm dark:bg-gray-700 dark:text-white">{{ tech }}</span>
                 {% endfor %}
             </div>
             
@@ -67,7 +72,7 @@
                     View on GitHub
                 </a>
                 <button onclick="showProjectDetails('{{ project.title }}')" 
-                        class="text-gray-600 hover:text-blue-600 transition-colors">
+                        class="text-gray-600 hover:text-blue-600 transition-colors dark:text-gray-300 dark:hover:text-blue-300">
                     <i class="fas fa-info-circle"></i>
                 </button>
             </div>
@@ -77,20 +82,20 @@
 
     <!-- Featured Project Spotlight -->
     <section class="bg-white rounded-2xl p-8 shadow-lg mt-12 scroll-reveal">
-        <h2 class="text-3xl font-bold text-gray-800 mb-6">Featured Project</h2>
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 dark:text-white">Featured Project</h2>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div class="scroll-reveal">
-                <h3 class="text-2xl font-bold text-blue-600 mb-4">ISRO Visualization Application</h3>
-                <p class="text-gray-600 mb-6">
+                <h3 class="text-2xl font-bold text-blue-600 mb-4 dark:text-blue-300">ISRO Visualization Application</h3>
+                <p class="text-gray-600 mb-6 dark:text-white">
                     A comprehensive Django-based web application developed during my internship at ISRO. 
                     This project manages SSM-data and generates dynamic visualizations based on user-specified 
                     date ranges, enhanced with robust security features and data management practices.
                 </p>
                 <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Python</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Django</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Data Visualization</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Security</span>
+                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm dark:text-white dark:bg-gray-700">Python</span>
+                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm dark:text-white dark:bg-gray-700">Django</span>
+                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm dark:text-white dark:bg-gray-700">Data Visualization</span>
+                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm dark:text-white dark:bg-gray-700">Security</span>
                 </div>
                 <a href="https://github.com/Abishek-Kumar-GHub/ISRO-Vizualization-App" target="_blank"
                    class="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
@@ -98,11 +103,11 @@
                     Explore Project
                 </a>
             </div>
-            <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-xl scroll-reveal">
+            <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-xl scroll-reveal dark:from-gray-800 dark:to-gray-700">
                 <div class="text-center">
                     <i class="fas fa-rocket text-6xl text-blue-600 mb-4"></i>
-                    <h4 class="text-xl font-semibold text-gray-800">ISRO Collaboration</h4>
-                    <p class="text-gray-600 mt-2">Professional internship project with India's space research organization</p>
+                    <h4 class="text-xl font-semibold text-gray-800 dark:text-white">ISRO Collaboration</h4>
+                    <p class="text-gray-600 mt-2 dark:text-white">Professional internship project with India's space research organization</p>
                 </div>
             </div>
         </div>
@@ -115,12 +120,18 @@ function filterProjects(category) {
     const buttons = document.querySelectorAll('.filter-btn');
 
     buttons.forEach(btn => {
-        btn.classList.remove('active', 'bg-blue-600', 'text-white');
-        btn.classList.add('bg-gray-200', 'text-gray-700');
+        // Remove active styles
+        btn.classList.remove('active', 'bg-blue-600', 'text-white', 'dark:bg-blue-600', 'dark:text-black');
+        btn.classList.add('bg-gray-200', 'text-gray-400');
     });
 
-    event.target.classList.remove('bg-gray-200', 'text-gray-700');
+    // Add active styles to clicked button
+    const isDark = document.documentElement.classList.contains('dark');
     event.target.classList.add('active', 'bg-blue-600', 'text-white');
+    if (isDark) {
+        event.target.classList.remove('bg-blue-600', 'text-white');
+        event.target.classList.add('dark:bg-blue-600', 'dark:text-black');
+    }
 
     cards.forEach((card, idx) => {
         if (category === 'all' || card.dataset.category === category) {
