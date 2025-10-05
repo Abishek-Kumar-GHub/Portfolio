@@ -15,22 +15,22 @@
 
     <!-- Project Categories Filter -->
     <div class="flex flex-wrap justify-center gap-4 mb-8 scroll-reveal">
-        <button onclick="filterProjects('all')" class="filter-btn active bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors dark:bg-gray-800 dark:text-white dark:hover:bg-blue-900 dark:active:bg-blue-300 dark:active:text-black">
+        <button onclick="filterProjects('all',event)" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-blue-300 transition-colors active:bg-blue-300 active:text-black dark:bg-gray-800 dark:text-white dark:hover:bg-blue-300 dark:hover:text-black dark:active:bg-blue-300 dark:active:text-black">
             All Projects
         </button>
-        <button onclick="filterProjects('Web Development')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors dark:bg-gray-800 dark:text-white dark:hover:bg-blue-900 dark:active:bg-blue-300 dark:active:text-black">
+        <button onclick="filterProjects('Web Development',event)" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-blue-300 transition-colors active:bg-blue-300 active:text-black dark:bg-gray-800 dark:text-white dark:hover:bg-blue-300 dark:hover:text-black dark:active:bg-blue-300 dark:active:text-black">
             Web Development
         </button>
-        <button onclick="filterProjects('Cybersecurity')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors dark:bg-gray-800 dark:text-white dark:hover:bg-blue-900 dark:active:bg-blue-300 dark:active:text-black">
+        <button onclick="filterProjects('Cybersecurity',event)" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-blue-300 transition-colors active:bg-blue-300 active:text-black dark:bg-gray-800 dark:text-white dark:hover:bg-blue-300 dark:hover:text-black dark:active:bg-blue-300 dark:active:text-black">
             Cybersecurity
         </button>
-        <button onclick="filterProjects('IoT')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors dark:bg-gray-800 dark:text-white dark:hover:bg-blue-900 dark:active:bg-blue-300 dark:active:text-black">
+        <button onclick="filterProjects('IoT',event)" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-blue-300 transition-colors active:bg-blue-300 active:text-black dark:text-white dark:bg-gray-800 dark:hover:bg-blue-300 dark:hover:text-black dark:active:bg-blue-300 dark:active:text-black">
             IoT
         </button>
-        <button onclick="filterProjects('Full Stack Development')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors dark:bg-gray-800 dark:text-white dark:hover:bg-blue-900 dark:active:bg-blue-300 dark:active:text-black">
+        <button onclick="filterProjects('Full Stack Development',event)" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-blue-300 transition-colors active:bg-blue-300 active:text-black dark:bg-gray-800 dark:text-white dark:hover:bg-blue-300 dark:hover:text-black dark:active:bg-blue-300 dark:active:text-black">
             Full Stack Development
         </button>
-        <button onclick="filterProjects('Machine Learning')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors dark:bg-gray-800 dark:text-white dark:hover:bg-blue-900 dark:active:bg-blue-300 dark:active:text-black">
+        <button onclick="filterProjects('Machine Learning',event)" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-blue-300 transition-colors active:bg-blue-300 active:text-black dark:bg-gray-800 dark:text-white dark:hover:bg-blue-300 dark:hover:text-black dark:active:bg-blue-300 dark:active:text-black">
             Machine Learning
         </button>
     </div>
@@ -115,24 +115,21 @@
 </div>
 
 <script>
-function filterProjects(category) {
+    function filterProjects(category, event) {
     const cards = document.querySelectorAll('.project-card');
     const buttons = document.querySelectorAll('.filter-btn');
 
+    // Reset all buttons
     buttons.forEach(btn => {
-        // Remove active styles
-        btn.classList.remove('active', 'bg-blue-600', 'text-white', 'dark:bg-blue-600', 'dark:text-black');
-        btn.classList.add('bg-gray-200', 'text-gray-400');
+        btn.classList.remove('active', 'bg-blue-300', 'text-black');
+        btn.classList.add('bg-gray-200', 'text-gray-700', 'dark:bg-gray-800', 'dark:text-white');
     });
 
-    // Add active styles to clicked button
-    const isDark = document.documentElement.classList.contains('dark');
-    event.target.classList.add('active', 'bg-blue-600', 'text-white');
-    if (isDark) {
-        event.target.classList.remove('bg-blue-600', 'text-white');
-        event.target.classList.add('dark:bg-blue-600', 'dark:text-black');
-    }
+    // Set active button
+    event.target.classList.add('active', 'bg-blue-300', 'text-black');
+    event.target.classList.remove('bg-gray-200', 'text-gray-700', 'dark:bg-gray-800', 'dark:text-white');
 
+    // Show/hide project cards
     cards.forEach((card, idx) => {
         if (category === 'all' || card.dataset.category === category) {
             card.style.display = 'block';
@@ -148,8 +145,10 @@ function filterProjects(category) {
     });
 }
 
-function showProjectDetails(projectTitle) {
-    alert(`More details about "${projectTitle}" coming soon! Click GitHub link to view the repository.`);
-}
+
+
+    function showProjectDetails(projectTitle) {
+        alert(`More details about "${projectTitle}" coming soon! Click GitHub link to view the repository.`);
+    }
 </script>
 {% endblock %}

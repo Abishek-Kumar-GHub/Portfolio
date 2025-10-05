@@ -1,10 +1,12 @@
 # app.py - Flask Backend
 from flask import Flask, render_template, url_for
+from urllib.parse import quote
 
 app = Flask(__name__)
 
-# Configuration
-app.config['SECRET_KEY'] = 'your-secret-key-here'
+@app.template_filter('urlencode')
+def urlencode_filter(s):
+    return quote(s)
 
 @app.route('/')
 @app.route('/about')
@@ -22,7 +24,7 @@ def about():
             'role': 'Web Development Intern',
             'company': 'Fidrox Technologies',
             'duration': 'Apr 2025 - Jul 2025',
-            'description': 'As part of a 7-member team and lead, I worked on updating visitor statuses—Scheduled, Rescheduled, and Cancelled—along with managing appointment validity dates. Developed a responsive user interface using AdminLTE, jqGrid, and Bootstrap, and integrated the system with MSSQL.'
+            'description': 'As part of a 7-member team and lead, I worked on updating visitor statuses—Scheduled, Rescheduled, and Cancelled—along with managing appointment validity dates. Developed a responsive user interface using AdminLTE, jqGrid, and Bootstrap, and integrated the system with .NET Core 8, Entity Framework and MSSQL.'
         }
     ]
     

@@ -67,9 +67,10 @@
                 </h3>
                 <div class="flex flex-wrap gap-2">
                     {% for skill in skill_list %}
-                    <span class="bg-white text-gray-700 px-3 py-1 rounded-full text-sm border border-gray-200 hover:border-blue-300 transition-colors dark:bg-gray-800 dark:text-white">
-                        {{ skill }}
-                    </span>
+                        <a href="https://www.google.com/search?q={{ skill | urlencode }}" target="_blank"
+                        class="bg-white text-gray-700 px-3 py-1 rounded-full text-sm border border-gray-200 hover:border-blue-300 transition-colors dark:bg-gray-800 dark:text-white">
+                            {{ skill }}
+                        </a>
                     {% endfor %}
                 </div>
             </div>

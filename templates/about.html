@@ -26,14 +26,37 @@
         </div>
     </section>
 
+    <!-- Buttons Section -->
+    <section>
+        <div class="max-w-4xl mx-auto mt-8 flex flex-wrap justify-center gap-6 scroll-reveal">
+            <a href="{{ url_for('projects') }}" 
+                class="bg-gradient-to-br from-orange-500 to-red-500 px-6 py-3 rounded-full text-white font-medium 
+                   transition border-2 border-transparent 
+                   hover:from-orange-600 hover:to-red-600">
+                My Projects
+            </a>
+            <a href="{{ url_for('research') }}" 
+                class="bg-gradient-to-br from-blue-500 to-purple-500 px-6 py-3 rounded-full text-white font-medium 
+                   transition border-2 border-transparent 
+                   hover:from-blue-600 hover:to-purple-600">
+                Research
+            </a>
+            <a href="{{  url_for('static', filename='resume/Abishek-Cyber-CV.pdf') }}" 
+            download="Abishek_Kumar_Resume.pdf"
+                class="bg-gray-600 px-6 py-3 rounded-full text-white font-medium 
+                   transition dark:bg-black dark:border  
+                   hover:bg-gray-800">
+                Resume
+            </a>
+        </div>
+    </section>
+
     <!-- About Me Content -->
     <section class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg scroll-reveal">
-    <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-6">Professional Summary</h2>
+    <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-6">About Me</h2>
     <p class="text-gray-600 dark:text-white text-lg leading-relaxed mb-8">
-            I am a computer applications graduate with specialization in cyber security and cloud computing, 
-            seeking to apply my extensive academic background and practical experience in an organisation with 
-            an innovative vision. I am looking forward to contributing to a dynamic team and supporting research 
-            and development efforts in cutting-edge technologies.
+            I am a Computer Applications graduate specializing in Cybersecurity and Cloud Computing, eager to leverage my strong academic foundation and hands-on experience in a forward-thinking organization. 
+            Passionate about innovation and emerging technologies, I aim to contribute to dynamic teams, drive impactful projects, and support research and development initiatives in cutting-edge domains.
         </p>
       <!--  
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 scroll-reveal">
