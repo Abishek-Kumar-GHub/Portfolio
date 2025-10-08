@@ -218,7 +218,7 @@ def research():
             'url': 'https://medium.com/@abishektechy/capture-mobile-traffic-2156171b48cc'
         },
         {
-            'title': 'Android Debug Shell',
+            'title': 'Android Debug Bridge',
             'description': 'A walkthrough of using Android Debug Bridge shell commands to access and control Android devices for debugging and development.',
             'platform': 'Medium',
             'url': 'https://medium.com/@abishektechy/android-debug-bridge-452c221dda6f'
