@@ -203,25 +203,25 @@ def research():
             'title': 'OWASP top 10',
             'description': 'A summary of the ten most critical web application security risks, aimed at raising developer awareness',
             'platform': 'Medium',
-            'url': 'https://medium.com/@abishektechy'
+            'url': 'https://medium.com/@abishektechy/owasp-top-ten-8b2f1005abca'
         },
         {
             'title': 'Cookie Headers',
             'description': 'An exploration of HTTP cookie header fields—how they work and best practices for secure session implementation.',
             'platform': 'Medium',
-            'url': 'https://medium.com/@abishektechy'
+            'url': 'https://medium.com/@abishektechy/cookie-headers-cef87d3dc437'
         },
         {
             'title': 'How to capture mobile traffic',
             'description': 'A guide on intercepting and analyzing mobile app network requests using tools like Burp Suite',
             'platform': 'Medium',
-            'url': 'https://medium.com/@abishektechy'
+            'url': 'https://medium.com/@abishektechy/capture-mobile-traffic-2156171b48cc'
         },
         {
-            'title': 'ADB shell',
+            'title': 'Android Debug Shell',
             'description': 'A walkthrough of using Android Debug Bridge shell commands to access and control Android devices for debugging and development.',
             'platform': 'Medium',
-            'url': 'https://medium.com/@abishektechy'
+            'url': 'https://medium.com/@abishektechy/android-debug-bridge-452c221dda6f'
         }
     ]
     
