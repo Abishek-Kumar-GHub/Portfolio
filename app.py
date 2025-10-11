@@ -37,79 +37,86 @@ def projects():
     projects_data = [
         {
             'title': 'Gemini Chatbot Application',
-            'description': 'GraphQL-based chatbot with Flask framework for query handling and content summarization. Includes comprehensive API security analysis.',
+            'description': 'GraphQL-based chatbot with Flask framework for query handling and content summarization. Includes comprehensive API security analysis',
             'tech': ['Python', 'Flask', 'GraphQL', 'Gemini API', 'JavaScript'],
             'github': 'https://github.com/Abishek-Kumar-GHub/Gemini-ChatBot',
             'category': 'Web Development'
         },
         {
             'title': 'ISRO SSM Visualization App',
-            'description': 'Django-based web application for SSM-data management with date-range visualizations. Enhanced with Django security features.',
+            'description': 'Django-based web application for SSM-data management with date-range visualizations. Enhanced with Django security features',
             'tech': ['Python', 'Django', 'Data Visualization', 'Plotly.js'],
             'github': 'https://github.com/Abishek-Kumar-GHub/ISRO-Vizualization-App',
             'category': 'Full Stack Development'
         },
         {
             'title': 'Visitor Management System',
-            'description': 'A visitor management system built using AdminLTE and .NET COre 8 for managing visitor information and tracking.',
+            'description': 'A visitor management system built using AdminLTE and .NET COre 8 for managing visitor information and tracking',
             'tech': ['AdminLTE', 'Jquery', '.NET Core 8', 'Entity Framework', 'MSSQL'],
             'github': 'https://github.com/Abishek-Kumar-GHub/Visitor-Management-System',
             'category': 'Web Development'
         },
         {
             'title': 'Vehicle Tracking IoT System',
-            'description': 'GNSS-based tracking system using ESP32, Neo 6M GPS, OLED display, and ThingSpeak for cloud analytics.',
+            'description': 'GNSS-based tracking system using ESP32, Neo 6M GPS, OLED display, and ThingSpeak for cloud analytics',
             'tech': ['C++', 'Arduino IDE', 'ESP32', 'IoT', 'ThingSpeak'],
             'github': 'https://github.com/Abishek-Kumar-GHub/Vehicle-Tracking-IoT',
             'category': 'IoT'
         },
         {
             'title': 'Vulnerable Application Lab for SQL Injection',
-            'description': 'Educational cybersecurity applications demonstrating SQL injection (Django) with mitigation solutions.',
+            'description': 'Educational cybersecurity applications demonstrating SQL injection (Django) with mitigation solutions',
             'tech': ['Python', 'Django', 'MySQL', 'Cybersecurity'],
             'github': 'https://github.com/Abishek-Kumar-GHub/SQL-vul',
             'category': 'Cybersecurity'
         },
         {
             'title': 'Vulnerable Application Lab for XSS',
-            'description': 'Educational cybersecurity applications demonstrating XSS (Flask) with mitigation solutions.',
+            'description': 'Educational cybersecurity applications demonstrating XSS (Flask) with mitigation solutions',
             'tech': ['Python', 'JavaScript', 'Flask', 'Cybersecurity'],
             'github': 'https://github.com/Abishek-Kumar-GHub/XSS-vul',
             'category': 'Cybersecurity'
         },
         {
             'title': 'COVID Prediction Model',
-            'description': 'Machine learning model using Java and Weka for COVID-19 case trend prediction and classification analysis.',
+            'description': 'Machine learning model using Java and Weka for COVID-19 case trend prediction and classification analysis',
             'tech': ['Java', 'Weka', 'Machine Learning', 'Data Analysis'],
             'github': 'https://github.com/Abishek-Kumar-GHub/Covid-Prediciton',
             'category': 'Machine Learning'
         },
         {
             'title': 'Ransomware Simulation Lab using Flask',
-            'description': 'Educational Flask-based ransomware simulation demonstrating encryption/decryption mechanics in controlled environment.',
+            'description': 'Educational Flask-based ransomware simulation demonstrating encryption/decryption mechanics in controlled environment',
             'tech': ['Python', 'Flask', 'Cryptography', 'Security'],
             'github': 'https://github.com/Abishek-Kumar-GHub/Ransome-Flask',
             'category': 'Cybersecurity'
         },
         {
             'title': 'University Management using Angular',
-            'description': 'A Unversity management system built using Anglular Framework with Typescript for managing university\'s department, student, faculty informations.',
+            'description': 'A Unversity management system built using Anglular Framework with Typescript for managing university\'s department, student, faculty informations',
             'tech': ['Python', 'Typescript', 'Angular', 'Postgresql'],
             'github': 'https://github.com/Abishek-Kumar-GHub/University-Management',
             'category': 'Full Stack Development'
         },
         {
             'title': 'Student Management using Django',
-            'description': 'A Student management system built using Django Framework with JavaScript for managing student\'s department, course, faculty informations.',
+            'description': 'A Student management system built using Django Framework with JavaScript for managing student\'s department, course, faculty informations',
             'tech': ['Python', 'JavaScript', 'Django', 'Postgresql'],
             'github': 'https://github.com/Abishek-Kumar-GHub/Student-Management',
             'category': 'Full Stack Development'
         },
         {
             'title': 'Tensorflow Image Prediction',
-            'description': 'Using 15+ functions in TensorFlow, explored the prediction of Abalone dataset, Image prediciton and Iris Classification.',
+            'description': 'Using 15+ functions in TensorFlow, explored the prediction of Abalone dataset, Image prediciton and Iris Classification',
             'tech': ['Python', 'TensorFlow', 'Scikit-learn', 'Pandas'],
             'github': 'https://github.com/Abishek-Kumar-GHub/Tensorflow-Functions',
+            'category': 'Machine Learning'
+        },
+        {
+            'title': 'Stock Market Prediction using KNN Model',
+            'description': 'Developed a K-Nearest Neighbors (KNN) based prediction model to analyze stock datasets including HDFC, Yes Bank, and three others',
+            'tech': ['Python', 'Prediction', 'Scikit-learn', 'Pandas'],
+            'github': '#',
             'category': 'Machine Learning'
         },
         {
@@ -138,12 +145,10 @@ def academics():
                 'Python Advanced',
                 'Bash Scripting',
                 'Java with OOP',
-                'Burp Suite',
-                'Nmap',
-                'Wireshark',
+                'Ethical Hacking',
                 'AWS',
-                'Postman',
-                'DBMS'
+                'Machine Learning',
+                'DBMS and NoSQL(MongoDB)'
             ]
         },
         {
@@ -167,7 +172,7 @@ def academics():
     
     skills_data = {
         'Programming Languages': ['Python', 'C', 'C#', 'PHP', 'Java', 'HTML', 'CSS', 'JavaScript', 'C++', 'Visual Basics'],
-        'Tools & Frameworks': ['Angular', 'Django', 'Flask', '.Net Core 8', 'Entity', 'Burp Suite', 'Nmap', 'Wireshark', 'MongoDb', 'MSSQL', 'OracleSQL', 'Postgresql', 'MySQL'],
+        'Tools & Frameworks': ['Angular', 'Django', 'Flask', '.Net Core 8', 'Entity', 'Burp Suite', 'Nmap', 'Wireshark', 'MongoDb', 'MSSQL', 'OracleSQL', 'Postgresql', 'MySQL', 'Scikit-Learn', 'Weka'],
         'Cloud Platforms': ['AWS (S3, EC2, IAM, Lambda)', 'Docker', 'Kubernetes', 'Prowler', 'Flaws.Cloud'],
         'Cybersecurity Expertise': ['Vulnerability analysis', 'API security', 'SQL injection', 'XSS', 'Hash functions', 'JWT', 'Encryption and Decryption algorithms']
     }
