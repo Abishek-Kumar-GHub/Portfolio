@@ -180,7 +180,7 @@ def academics():
     
     skills_data = {
         'Programming Languages': ['Python', 'C', 'C#', 'PHP', 'Java', 'HTML', 'CSS', 'JavaScript', 'C++', 'Visual Basics'],
-        'Tools & Frameworks': ['Angular', 'Django', 'Flask', '.Net Core 8', 'Entity', 'Burp Suite', 'Nmap', 'Wireshark', 'MongoDb', 'MSSQL', 'OracleSQL', 'Postgresql', 'MySQL', 'Scikit-Learn', 'Weka'],
+        'Tools & Frameworks': ['Angular', 'Django', 'Flask', 'FastAPI', 'RestAPI', '.Net Core 8', 'Entity', 'Burp Suite', 'Nmap', 'Wireshark', 'MongoDb', 'MSSQL', 'OracleSQL', 'Postgresql', 'MySQL', 'Scikit-Learn', 'Weka'],
         'Cloud Platforms': ['AWS (S3, EC2, IAM, Lambda)', 'Docker', 'Kubernetes', 'Prowler', 'Flaws.Cloud'],
         'Cybersecurity Expertise': ['Vulnerability analysis', 'API security', 'SQL injection', 'XSS', 'Hash functions', 'JWT', 'Encryption and Decryption algorithms']
     }
