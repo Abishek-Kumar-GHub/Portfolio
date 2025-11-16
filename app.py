@@ -36,6 +36,14 @@ def projects():
     # Sample project data - you can move this to a database later
     projects_data = [
         {
+            'title': 'CodeAtEase',
+            'description': 'CodeAtEase is an AI-powered developer assistant built with FastAPI, designed to simplify your workflow, integrate with GitHub, and give smart insights into your repositories.',
+            'tech': ['Python', 'FastAPI', 'GitHub-Oauth', 'QwenCoderAPI', 'JavaScript'],
+            'github': 'https://github.com/Abishek-Kumar-GHub/CodeAtEase1',
+            'info_link': ['https://codeatease.onrender.com/','https://youtu.be/q4ZQFZPz7KE'], 
+            'category': 'Web Development'
+        },
+        {
             'title': 'Gemini Chatbot Application',
             'description': 'GraphQL-based chatbot with Flask framework for query handling and content summarization. Includes comprehensive API security analysis',
             'tech': ['Python', 'Flask', 'GraphQL', 'Gemini API', 'JavaScript'],
