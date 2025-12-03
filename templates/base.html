@@ -9,7 +9,6 @@
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/A-icon.jpg') }}">
 
     <script>
-        // Tailwind dark mode configuration - must be before Tailwind loads
         tailwind.config = {
             darkMode: 'class',
         }
@@ -20,46 +19,200 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-52GJ4P6JH7');
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    
+    <style>
+        /* Hide default cursor */
+        * {
+            cursor: none !important;
+        }
+        
+        /* Particle Canvas */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            background: #f9fafb;
+        }
+
+        .dark #particle-canvas {
+            background: #111827;
+        }
+        
+        /* ACCURATE CUSTOM CURSOR - No smoothing */
+        #cursor-main {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 99999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.15s ease, background 0.15s ease;
+        }
+
+        /* When cursor hovers elements */
+        .cursor-hover {
+            transform: translate(-50%, -50%) scale(1.6);
+            background: rgba(59, 130, 246, 0.2);
+        }
+        
+        /* Glassmorphism */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .dark .glass-effect {
+            background: rgba(31, 41, 55, 0.6);
+            border: 1px solid rgba(75, 85, 99, 0.3);
+        }
+        
+        /* Scroll Reveal */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Click Ripple Effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-animation 0.8s ease-out;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple-animation {
+            0% {
+                transform: scale(0);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        /* Card Hover Effects */
+        .card-hover {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .card-hover::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .card-hover:hover::before {
+            opacity: 1;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .card-hover:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Navigation Hover Effect */
+        #navigation-bar a {
+            position: relative;
+        }
+        
+        #navigation-bar a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+        
+        #navigation-bar a:hover::after {
+            width: 100%;
+        }
+        
+        body {
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Magnetic effect for interactive elements */
+        .magnetic {
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+<body class="text-gray-900 dark:text-gray-100 transition-colors duration-300 {% if active_page == 'about' %}about-page{% endif %}" style="background: transparent;">
+    <!-- Accurate Custom Cursor (No Trail) -->
+    <div id="cursor-main"></div>
+    
+    <!-- Particle Background -->
+    <canvas id="particle-canvas"></canvas>
+    
     <!-- Navigation Header -->
-    <header class="bg-white dark:bg-gray-800 shadow-lg sticky top-0 z-50 transition-colors duration-300">
+    <header class="glass-effect shadow-lg sticky top-0 z-50 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <a href="{{ url_for('about') }}" class="text-2xl font-bold gradient-text">
+                    <a href="{{ url_for('about') }}" class="text-2xl font-bold gradient-text magnetic">
                         Abishek Kumar
                     </a>
                 </div>
                 
                 <!-- Desktop Navigation -->
-                <nav id = "navigation-bar" class="hidden md:flex space-x-8">
+                <nav id="navigation-bar" class="hidden md:flex space-x-8">
                     <a href="{{ url_for('about') }}" 
-                       class="px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 
+                       class=" px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 
                               {% if active_page == 'about' %}bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300{% else %}text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400{% endif %}">
                         <i class="fas fa-user mr-2"></i>About Me
                     </a>
                     <a href="{{ url_for('projects') }}" 
-                       class="px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 
+                       class=" px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 
                               {% if active_page == 'projects' %}bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300{% else %}text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400{% endif %}">
                         <i class="fas fa-code mr-2"></i>Projects
                     </a>
                     <a href="{{ url_for('academics') }}" 
-                       class="px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 
+                       class=" px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 
                               {% if active_page == 'academics' %}bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300{% else %}text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400{% endif %}">
                         <i class="fas fa-graduation-cap mr-2"></i>Academics
                     </a>
                     <a href="{{ url_for('research') }}" 
-                       class="px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 
+                       class=" px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 
                               {% if active_page == 'research' %}bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300{% else %}text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400{% endif %}">
                         <i class="fas fa-flask mr-2"></i>Research
                     </a>
                     <a href="{{ url_for('contact') }}" 
-                       class="px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 
+                       class=" px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 
                               {% if active_page == 'contact' %}bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300{% else %}text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400{% endif %}">
                         <i class="fas fa-envelope mr-2"></i>Contact
                     </a>
@@ -143,12 +296,12 @@
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
         {% block content %}{% endblock %}
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 dark:bg-gray-950 text-white py-12 mt-16 transition-colors duration-300">
+    <footer class="bg-gray-900 dark:bg-gray-950 text-white py-12 mt-16 transition-colors duration-300 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
@@ -195,11 +348,184 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // ACCURATE Custom Cursor - Direct position tracking (no smoothing)
+        const cursorMain = document.getElementById('cursor-main');
+        
+        document.addEventListener('mousemove', (e) => {
+            // Direct positioning - no smoothing for accuracy
+            cursorMain.style.left = e.clientX + 'px';
+            cursorMain.style.top = e.clientY + 'px';
+        });
+        
+        // Magnetic effect ONLY for elements with .magnetic class
+        const magneticElements = document.querySelectorAll('.magnetic, button');
+
+        magneticElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorMain.classList.add('cursor-hover');
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursorMain.classList.remove('cursor-hover');
+                el.style.transform = '';
+            });
+            
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                el.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+            });
+        });
+
+        // Cursor hover effect for ALL other buttons and links
+        const allInteractive = document.querySelectorAll('a, input, select, textarea');
+
+        allInteractive.forEach(el => {
+            if (el.classList.contains('magnetic')) return;
+            
+            el.style.pointerEvents = 'auto';
+            
+            el.addEventListener('mouseenter', () => {
+                cursorMain.classList.add('cursor-hover');
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursorMain.classList.remove('cursor-hover');
+            });
+        });
+        
+        // Particle Animation with Mouse Interaction
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 60;
+        let mouseX = 0, mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.baseVx = (Math.random() - 0.5) * 0.8;
+                this.baseVy = (Math.random() - 0.5) * 0.8;
+                this.vx = this.baseVx;
+                this.vy = this.baseVy;
+                this.radius = Math.random() * 2 + 1;
+            }
+            
+            update(mouseX, mouseY) {
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 200) {
+                    const angle = Math.atan2(dy, dx);
+                    const force = (200 - distance) / 200;
+                    
+                    this.vx = this.baseVx - Math.cos(angle) * force * 3;
+                    this.vy = this.baseVy - Math.sin(angle) * force * 3;
+                } else {
+                    this.vx += (this.baseVx - this.vx) * 0.05;
+                    this.vy += (this.baseVy - this.vy) * 0.05;
+                }
+                
+                this.x += this.vx;
+                this.y += this.vy;
+                
+                if (this.x < 0 || this.x > canvas.width) {
+                    this.vx *= -1;
+                    this.baseVx *= -1;
+                    this.x = Math.max(0, Math.min(canvas.width, this.x));
+                }
+                if (this.y < 0 || this.y > canvas.height) {
+                    this.vy *= -1;
+                    this.baseVy *= -1;
+                    this.y = Math.max(0, Math.min(canvas.height, this.y));
+                }
+            }
+            
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = document.documentElement.classList.contains('dark') 
+                    ? 'rgba(147, 197, 253, 0.4)' 
+                    : 'rgba(59, 130, 246, 0.5)';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update(mouseX, mouseY);
+                particle.draw();
+            });
+            
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 120) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = document.documentElement.classList.contains('dark')
+                            ? `rgba(147, 197, 253, ${0.25 * (1 - distance / 120)})`
+                            : `rgba(59, 130, 246, ${0.4 * (1 - distance / 120)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            
+            requestAnimationFrame(animateParticles);
+        }
+
+        animateParticles();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        
+        // Enhanced Ripple Effect on Click
+        document.addEventListener('click', (e) => {
+            const colors = ['#3b82f6', '#8b5cf6', '#ec4899', '#10b981', '#f59e0b'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            const ripple = document.createElement('div');
+            ripple.className = 'ripple';
+            ripple.style.left = e.clientX + 'px';
+            ripple.style.top = e.clientY + 'px';
+            ripple.style.width = ripple.style.height = '20px';
+            ripple.style.background = `radial-gradient(circle, ${color}80 0%, transparent 70%)`;
+            ripple.style.border = `2px solid ${color}`;
+            document.body.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 800);
+        });
+        
+        // Theme Toggle
         const htmlEl = document.documentElement;
         const themeToggleDesktop = document.getElementById('theme-toggle-desktop');
         const themeToggleMobile = document.getElementById('theme-toggle-mobile');
         
-        // Initialize theme from localStorage or default to light
         const savedTheme = localStorage.getItem('theme') || 'light';
         
         if (savedTheme === 'dark') {
@@ -208,7 +534,6 @@
             htmlEl.classList.remove('dark');
         }
         
-        // Function to update all theme toggle icons
         function updateThemeIcons() {
             const isDark = htmlEl.classList.contains('dark');
             const allIcons = [
@@ -229,7 +554,6 @@
             });
         }
         
-        // Function to toggle theme
         function toggleTheme() {
             htmlEl.classList.toggle('dark');
             const isDark = htmlEl.classList.contains('dark');
@@ -237,10 +561,8 @@
             updateThemeIcons();
         }
         
-        // Initial icon update
         updateThemeIcons();
         
-        // Add event listeners to both toggle buttons
         if (themeToggleDesktop) {
             themeToggleDesktop.addEventListener('click', toggleTheme);
         }
@@ -249,7 +571,7 @@
             themeToggleMobile.addEventListener('click', toggleTheme);
         }
         
-        // ===== Mobile Menu Toggle =====
+        // Mobile Menu Toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         
@@ -264,7 +586,7 @@
             });
         }
         
-        // ===== Smooth Scrolling =====
+        // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -278,6 +600,7 @@
         });
     });
 
+    // Scroll Reveal
     document.addEventListener('DOMContentLoaded', () => {
         const revealElements = document.querySelectorAll('.scroll-reveal');
 
@@ -285,14 +608,38 @@
             const windowHeight = window.innerHeight;
             revealElements.forEach(el => {
                 const elementTop = el.getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) { // adjust threshold
+                if (elementTop < windowHeight - 100) {
                     el.classList.add('active');
                 }
             });
         }
 
         window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll(); // trigger on load
+        revealOnScroll();
+    });
+    
+    // Ensure custom cursor doesn't block clicks
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all custom cursor elements
+        const cursors = document.querySelectorAll('.custom-cursor, .cursor, [class*="cursor"]');
+        
+        // Make cursors non-blocking
+        cursors.forEach(cursor => {
+            cursor.style.pointerEvents = 'none';
+        });
+
+        // Ensure all interactive elements are clickable
+        const interactiveElements = document.querySelectorAll('a, button, input, select, textarea');
+        
+        interactiveElements.forEach(el => {
+            el.style.position = 'relative';
+            el.style.zIndex = '10';
+            el.style.pointerEvents = 'auto';
+        });
+
+        // Debug: Log if buttons are clickable
+        const buttons = document.querySelectorAll('.project-card button, .project-card a');
+        console.log(`Found ${buttons.length} interactive elements in project cards`);
     });
     </script>
     {% block modal %}{% endblock %}
