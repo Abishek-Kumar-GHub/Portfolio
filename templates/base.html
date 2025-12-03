@@ -222,21 +222,6 @@
             transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .site-title {
-            transition: color 0.3s ease, filter 0.3s ease;
-        }
-
-        html:not(.dark) .site-title {
-            color: #000;
-        }
-
-        html.dark .site-title {
-            color: #fff;
-        }
-
-        .site-title:hover {
-            filter: brightness(1.9);
-        }
     </style>
 </head>
 <body class="text-gray-900 dark:text-gray-100 transition-colors duration-300 {% if active_page == 'about' %}about-page{% endif %}" style="background: transparent;">
@@ -251,7 +236,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <a href="{{ url_for('about') }}" class="site-title text-2xl font-bold">
+                    <a href="{{ url_for('about') }}" class="site-title text-2xl font-bold hover:text-gray-600 dark:hover:text-blue-400 transition-colors">
                         Abishek Kumar
                     </a>
                 </div>
