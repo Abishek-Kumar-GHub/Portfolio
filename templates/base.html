@@ -218,9 +218,24 @@
             overflow-x: hidden;
         }
 
-        /* Magnetic effect for interactive elements */
         .magnetic {
             transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .site-title {
+            transition: color 0.3s ease, filter 0.3s ease;
+        }
+
+        html:not(.dark) .site-title {
+            color: #000;
+        }
+
+        html.dark .site-title {
+            color: #fff;
+        }
+
+        .site-title:hover {
+            filter: brightness(1.9);
         }
     </style>
 </head>
@@ -236,11 +251,11 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <a href="{{ url_for('about') }}" class="text-2xl font-bold gradient-text magnetic">
+                    <a href="{{ url_for('about') }}" class="site-title text-2xl font-bold">
                         Abishek Kumar
                     </a>
                 </div>
-                
+
                 <!-- Desktop Navigation -->
                 <nav id="navigation-bar" class="hidden md:flex space-x-8">
                     <a href="{{ url_for('about') }}" 
