@@ -24,7 +24,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
     
     <style>
-        /* Hide default cursor */
+        @media (hover: none) and (pointer: coarse) {
+            * {
+                cursor: auto !important;
+            }
+            #cursor-main,
+            #cursor-dot {
+                display: none !important;
+            }
+        }
+
+        /* Global cursor hide (desktop only) */
         * {
             cursor: none !important;
         }
@@ -38,29 +48,47 @@
             height: 100%;
             z-index: 1;
             pointer-events: none;
-            background: #f9fafb;
+            background: #f9fafb; /* Light mode background */
         }
 
+        /* Dark mode particle canvas background */
         .dark #particle-canvas {
             background: #111827;
         }
         
-        /* ACCURATE CUSTOM CURSOR - No smoothing */
+        /* Main cursor */
         #cursor-main {
             width: 18px;
             height: 18px;
             border: 2px solid #3b82f6;
             border-radius: 50%;
             position: fixed;
+            top: 0;
+            left: 0;
             pointer-events: none;
             z-index: 99999;
             transform: translate(-50%, -50%);
-            transition: transform 0.15s ease, background 0.15s ease;
+            transition: transform 0.1s ease-out;
+        }
+
+        /* Small dot that follows faster */
+        #cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: #3b82f6;
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 100000;
+            transform: translate(-50%, -50%);
+            transition: transform 0.05s ease-out;
         }
 
         /* When cursor hovers elements */
         .cursor-hover {
-            transform: translate(-50%, -50%) scale(1.6);
+            transform: translate(-50%, -50%) scale(1.5);
             background: rgba(59, 130, 246, 0.2);
         }
         
@@ -88,7 +116,7 @@
             transform: translateY(0);
         }
         
-        /* Click Ripple Effect */
+        /* Click Ripple Effect with Color */
         .ripple {
             position: absolute;
             border-radius: 50%;
@@ -106,6 +134,30 @@
                 transform: scale(4);
                 opacity: 0;
             }
+        }
+        
+        /* Button Glow */
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn-glow:hover::before {
+            width: 300px;
+            height: 300px;
         }
         
         /* Card Hover Effects */
@@ -173,7 +225,7 @@
     </style>
 </head>
 <body class="text-gray-900 dark:text-gray-100 transition-colors duration-300 {% if active_page == 'about' %}about-page{% endif %}" style="background: transparent;">
-    <!-- Accurate Custom Cursor (No Trail) -->
+    <!-- Custom Cursor (No Trail) -->
     <div id="cursor-main"></div>
     
     <!-- Particle Background -->
@@ -348,11 +400,11 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // ACCURATE Custom Cursor - Direct position tracking (no smoothing)
+        // Accurate Custom Cursor (No Trail, Minimal Smoothing)
         const cursorMain = document.getElementById('cursor-main');
         
+        // Direct cursor positioning with minimal lag
         document.addEventListener('mousemove', (e) => {
-            // Direct positioning - no smoothing for accuracy
             cursorMain.style.left = e.clientX + 'px';
             cursorMain.style.top = e.clientY + 'px';
         });
@@ -561,8 +613,8 @@
             updateThemeIcons();
         }
         
-        updateThemeIcons();
-        
+        updateThemeIcons()
+                
         if (themeToggleDesktop) {
             themeToggleDesktop.addEventListener('click', toggleTheme);
         }
@@ -617,7 +669,7 @@
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
     });
-    
+
     // Ensure custom cursor doesn't block clicks
     document.addEventListener('DOMContentLoaded', function() {
         // Get all custom cursor elements
@@ -641,7 +693,33 @@
         const buttons = document.querySelectorAll('.project-card button, .project-card a');
         console.log(`Found ${buttons.length} interactive elements in project cards`);
     });
+
+    if (matchMedia('(hover: none) and (pointer: coarse)').matches) {
+        document.getElementById("cursor-main").style.display = "none";
+        document.getElementById("cursor-dot").style.display = "none";
+    } else {
+
+        const cursorMain = document.getElementById("cursor-main");
+        const cursorDot = document.getElementById("cursor-dot");
+
+        document.addEventListener("mousemove", (e) => {
+            cursorMain.style.left = e.clientX + "px";
+            cursorMain.style.top = e.clientY + "px";
+
+            cursorDot.style.left = e.clientX + "px";
+            cursorDot.style.top = e.clientY + "px";
+        });
+
+        // Hover animation for links & buttons
+        document.querySelectorAll("a, button, .clickable").forEach(element => {
+            element.addEventListener("mouseenter", () => cursorMain.classList.add("cursor-hover"));
+            element.addEventListener("mouseleave", () => cursorMain.classList.remove("cursor-hover"));
+        });
+    }
     </script>
     {% block modal %}{% endblock %}
+<div id="cursor-main"></div>
+<div id="cursor-dot"></div>
+
 </body>
 </html>
