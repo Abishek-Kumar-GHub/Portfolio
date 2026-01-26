@@ -76,14 +76,14 @@ def projects():
             'description': 'Educational cybersecurity applications demonstrating SQL injection (Django) with mitigation solutions',
             'tech': ['Python', 'Django', 'MySQL', 'Cybersecurity'],
             'github': 'https://github.com/Abishek-Kumar-GHub/SQL-vul',
-            'category': 'Cybersecurity'
+            'category': 'Cyber Security'
         },
         {
             'title': 'Vulnerable Application Lab for XSS',
             'description': 'Educational cybersecurity applications demonstrating XSS (Flask) with mitigation solutions',
             'tech': ['Python', 'JavaScript', 'Flask', 'Cybersecurity'],
             'github': 'https://github.com/Abishek-Kumar-GHub/XSS-vul',
-            'category': 'Cybersecurity'
+            'category': 'Cyber Security'
         },
         {
             'title': 'COVID Prediction Model',
@@ -97,7 +97,7 @@ def projects():
             'description': 'Educational Flask-based ransomware simulation demonstrating encryption/decryption mechanics in controlled environment',
             'tech': ['Python', 'Flask', 'Cryptography', 'Security'],
             'github': 'https://github.com/Abishek-Kumar-GHub/Ransome-Flask',
-            'category': 'Cybersecurity'
+            'category': 'Cyber Security'
         },
         {
             'title': 'University Management using Angular',
@@ -143,7 +143,7 @@ def academics():
     education_data = [
         {
             'degree': 'Master of Computer Applications',
-            'specialization': 'Cyber Security and Cloud Computing',
+            'specialization': 'Cyber Security',
             'institution': 'Chanakya University',
             'duration': 'Nov 2023 - Jul 2025',
             'cgpa': '9.3',
@@ -182,7 +182,7 @@ def academics():
         'Programming Languages': ['Python', 'C', 'C#', 'PHP', 'Java', 'HTML', 'CSS', 'JavaScript', 'C++', 'Visual Basics'],
         'Tools & Frameworks': ['Angular', 'Django', 'Flask', 'FastAPI', 'REST API', '.Net Core 8', 'Entity', 'Burp Suite', 'Nmap', 'Wireshark', 'MongoDb', 'MSSQL', 'OracleSQL', 'Postgresql', 'MySQL', 'Scikit-Learn', 'Weka'],
         'Cloud Platforms': ['AWS (S3, EC2, IAM, Lambda)', 'Docker', 'Kubernetes', 'Prowler', 'Flaws.Cloud'],
-        'Cybersecurity Expertise': ['Vulnerability analysis', 'API security', 'SQL injection', 'XSS', 'Hash functions', 'JWT', 'Encryption and Decryption algorithms']
+        'Cyber Security Expertise': ['Vulnerability analysis', 'API security', 'SQL injection', 'XSS', 'Hash functions', 'JWT', 'Encryption and Decryption algorithms']
     }
     
     return render_template('academics.html', active_page='academics', education=education_data, skills=skills_data)

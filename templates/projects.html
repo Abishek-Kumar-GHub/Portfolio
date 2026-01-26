@@ -9,7 +9,7 @@
     <!-- Page Header -->
     <div class="text-center scroll-reveal">
         <h1 class="text-5xl font-bold text-gray-800 dark:text-white mb-4">My Projects</h1>
-        <p class="text-xl text-gray-600 dark:text-gray-300">A showcase of my development and cybersecurity projects</p>
+        <p class="text-xl text-gray-600 dark:text-gray-300">A showcase of my Development and Cyber Security projects</p>
     </div>
 
     <!-- Project Categories Filter -->
@@ -20,8 +20,8 @@
         <button onclick="filterProjects('Web Development', event)" class="filter-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 hover:scale-105">
             Web Development
         </button>
-        <button onclick="filterProjects('Cybersecurity', event)" class="filter-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 hover:scale-105">
-            Cybersecurity
+        <button onclick="filterProjects('Cyber Security', event)" class="filter-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 hover:scale-105">
+            Cyber Security
         </button>
         <button onclick="filterProjects('IoT', event)" class="filter-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 hover:scale-105">
             IoT
@@ -41,7 +41,7 @@
             <div class="flex items-center justify-between mb-4">
                 <span class="category-badge px-4 py-2 rounded-full text-sm font-semibold shadow-sm
                     {% if project.category == 'Web Development' %}bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300
-                    {% elif project.category == 'Cybersecurity' %}bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300
+                    {% elif project.category == 'Cyber Security' %}bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300
                     {% elif project.category == 'IoT' %}bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300
                     {% elif project.category == 'Machine Learning' %}bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300
                     {% elif project.category == 'Data Science' %}bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300
