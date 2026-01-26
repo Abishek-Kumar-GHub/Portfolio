@@ -240,6 +240,21 @@ def research():
     
     return render_template('research.html', active_page='research', research_projects=research_projects, publications=publications)
 
+@app.route('/research/articles')
+def articles():
+    """Articles listing page"""
+    return render_template('articles.html', active_page='research')
+
+@app.route('/research/articles/ctf-round-1')
+def article_ctf_round2():
+    """CTF Round 2 article page"""
+    return render_template('articles/article_ctf_round1.html', active_page='research')
+
+@app.route('/research/articles/boot-sequence')
+def article_boot_sequence():
+    """Boot Sequence article page"""
+    return render_template('articles/article_boot_sequence.html', active_page='research')
+
 @app.route('/contact')
 def contact():
     """Contact page"""
