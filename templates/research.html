@@ -52,16 +52,12 @@
     <!-- CTF Write-ups & Blogs Section -->
     <section class="bg-white rounded-2xl p-8 shadow-lg scroll-reveal">
       <div class="flex justify-between items-center mb-8">
-        <h2 class="text-3xl font-bold text-gray-800 dark:text-white">CTF Write-ups & Security Blogs</h2>
-        <a href="{{ url_for('articles') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-          View All Articles
-          <i class="fas fa-arrow-right ml-2"></i>
-        </a>
+        <h2 class="text-3xl font-bold text-gray-800 dark:text-white"> Write-ups & Blogs</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Article 1: CloudSek Hiring CTF Round 2 -->
-        <a href="{{ url_for('article_ctf_round2') }}" class="block group scroll-reveal">
+        <a href="{{ url_for('article_ctf_round1') }}" class="block group scroll-reveal">
           <div class="border border-gray-200 rounded-xl overflow-hidden hover:border-blue-300 hover:shadow-lg transition-all">
             <div class="bg-gradient-to-br from-blue-500 to-purple-600 p-6 text-white">
               <div class="flex items-center gap-2 mb-3">
@@ -112,6 +108,13 @@
               </div>
             </div>
           </div>
+        </a>
+      </div>
+    </br>
+      <div>
+        <a href="{{ url_for('articles') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+          More Articles
+          <i class="fas fa-arrow-right ml-2"></i>
         </a>
       </div>
     </section>

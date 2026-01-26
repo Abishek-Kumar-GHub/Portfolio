@@ -246,7 +246,7 @@ def articles():
     return render_template('articles.html', active_page='research')
 
 @app.route('/research/articles/ctf-round-1')
-def article_ctf_round2():
+def article_ctf_round1():
     """CTF Round 2 article page"""
     return render_template('articles/article_ctf_round1.html', active_page='research')
 
