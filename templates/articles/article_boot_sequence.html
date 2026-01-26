@@ -37,7 +37,7 @@
         <div class="p-8 md:p-12 prose prose-lg max-w-none dark:prose-invert">
             
             <h2>Introduction</h2>
-            <p>Imagine being tasked with rebooting an orbital relay control system before an entire fleet drifts off-course into the void of space. This was the premise of the "Boot Sequence" CTF challenge from CloudSek Research Team CTF 2025 — a thrilling web exploitation scenario that combined multiple attack vectors into a devastating vulnerability chain.</p>
+            <p>Imagine being tasked with rebooting an orbital relay control system before an entire fleet drifts off-course into the void of space. This was the premise of the "Boot Sequence" CTF challenge from CloudSek Hiring CTF 2025 — a thrilling web exploitation scenario that combined multiple attack vectors into a devastating vulnerability chain.</p>
             </br>
             <p>In this write-up, I'll walk you through how I exploited a web application from initial reconnaissance to complete system compromise, demonstrating:</p>
             <ul>
@@ -199,7 +199,7 @@ fetch('/api/admin/hyperpulse', {
             <div class="bg-blue-50 border-l-4 border-blue-500 p-6 my-8 dark:bg-gray-800 dark:border-blue-400">
                 <p class="font-semibold text-blue-900 dark:text-blue-300 mb-2">Response:</p>
                 <pre class="text-blue-800 dark:text-blue-200"><code>{ "result": "49" }  // 7*7 was evaluated!</code></pre>
-                <p class="text-xl font-bold text-blue-900 dark:text-blue-300 mt-4">🎯 SSTI CONFIRMED!</p>
+                <p class="text-xl font-bold text-blue-900 dark:text-blue-300 mt-4">SSTI CONFIRMED!</p>
             </div>
 
             <hr class="my-12 border-0 h-px bg-gray-400 dark:bg-gray-500">
@@ -274,7 +274,7 @@ if __name__ == '__main__':
             <pre class="bg-gray-900 text-green-400 p-4 rounded-lg overflow-x-auto"><code>&#123;&#123;lipsum.__globals__.os.popen('python3 /tmp/flag.py').read()&#125;&#125;</code></pre>
 
             <div class="bg-green-50 border-l-4 border-green-500 p-8 my-8 text-center dark:bg-gray-800 dark:border-green-400">
-                <p class="text-3xl font-bold text-green-900 mb-4 dark:text-green-300">🎉 FLAG CAPTURED!</p>
+                <p class="text-3xl font-bold text-green-900 mb-4 dark:text-green-300">FLAG CAPTURED!</p>
                 <p class="text-xl font-mono bg-white p-4 rounded-lg text-gray-800 dark:bg-gray-900 dark:text-green-400 overflow-x-auto">ClOuDsEk_ReSeArCH_tEaM_CTF_2025{997c4f47961b43ceaf327e08bc45ad0b}</p>
             </div>
 
@@ -350,7 +350,7 @@ if __name__ == '__main__':
             
             <div class="grid md:grid-cols-2 gap-6 my-6">
                 <div class="bg-red-50 p-6 rounded-lg dark:bg-gray-800">
-                    <p class="font-semibold text-red-900 mb-3 dark:text-red-300">❌ Vulnerable Code</p>
+                    <p class="font-semibold text-red-900 mb-3 dark:text-red-300">Vulnerable Code</p>
                     <pre class="text-sm"><code>// Hardcoded credentials
 const password = "GlowCloud!93";
 
@@ -361,7 +361,7 @@ SECRET_KEY = "butterfly"
 render_template_string(f"&#123;&#123;&#123;user_input&#125;&#125;&#125;")</code></pre>
                 </div>
                 <div class="bg-green-50 p-6 rounded-lg dark:bg-gray-800">
-                    <p class="font-semibold text-green-900 mb-3 dark:text-green-300">✅ Secure Code</p>
+                    <p class="font-semibold text-green-900 mb-3 dark:text-green-300">Secure Code</p>
                     <pre class="text-sm"><code>// Use OAuth/OIDC flows
 // No client-side credentials
 
@@ -375,12 +375,12 @@ render_template('response.html', data=escape(input))</code></pre>
 
             <h3>Key Prevention Measures</h3>
             <ul>
-                <li>✅ Never use <code>render_template_string()</code> with user input</li>
-                <li>✅ Generate strong JWT secrets (256+ bits)</li>
-                <li>✅ Implement server-side role validation</li>
-                <li>✅ Remove development files from production</li>
-                <li>✅ Apply principle of least privilege</li>
-                <li>✅ Monitor for suspicious patterns in logs</li>
+                <li> Never use <code>render_template_string()</code> with user input</li>
+                <li> Generate strong JWT secrets (256+ bits)</li>
+                <li> Implement server-side role validation</li>
+                <li> Remove development files from production</li>
+                <li> Apply principle of least privilege</li>
+                <li> Monitor for suspicious patterns in logs</li>
             </ul>
 
             <hr class="my-12 border-0 h-px bg-gray-400 dark:bg-gray-500">
