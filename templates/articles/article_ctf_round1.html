@@ -23,7 +23,8 @@
                 <span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">Web Security</span>
                 <span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">Mobile Security</span>
             </div>
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">CTF Security Report - Round 1: Breaking Authentication, Parsing, and Mobile Security</h1>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 ">CTF Security Report - Round 1: 
+                <span class="font-medium">Breaking Authentication, Parsing, and Mobile Security</span></h1>
             <div class="flex items-center gap-6 text-blue-100">
                 <span><i class="fas fa-user mr-2"></i>Abishek Kumar</span>
                 <span><i class="fas fa-calendar mr-2"></i>December 2025</span>
@@ -36,7 +37,7 @@
             
             <h2>Introduction</h2>
             <p>Welcome to my comprehensive write-up of the CloudSek Research Team CTF 2025 - Round 1. This challenge series presented four distinct security scenarios that mirror real-world vulnerabilities found in modern web applications and mobile platforms.</p>
-            
+        </br>
             <p>Throughout this report, I'll demonstrate how seemingly small misconfigurations and overlooked security principles can lead to complete system compromise. Each challenge taught valuable lessons about:</p>
             <ul>
                 <li><strong>Speed-based automation attacks</strong></li>
@@ -50,9 +51,9 @@
                 <p class="text-blue-800 dark:text-blue-200">All activities described in this write-up were conducted in a controlled CTF environment with proper authorization. Never attempt to exploit vulnerabilities in systems you don't own or have explicit permission to test.</p>
             </div>
 
-            <hr class="my-12">
+            <hr class="my-12 border-0 h-px bg-gray-400 dark:bg-gray-500">
 
-            <h2>Challenge 1: NITRO - The Speed Demon 🚀</h2>
+            <h2>Challenge 1: NITRO - The Speed Demon</h2>
             
             <h3>The Challenge</h3>
             <p>NITRO was a race against time. The server provided random strings and demanded transformed responses within a razor-thin time window of approximately 150 milliseconds. Any slower and you'd get the dreaded "Too slow" message.</p>
@@ -114,9 +115,9 @@ def solve_nitro():
                 </ul>
             </div>
 
-            <hr class="my-12">
+            <hr class="my-12 border-0 h-px bg-gray-400 dark:bg-gray-500">
 
-            <h2>Challenge 2: BAD FEEDBACK - XXE in the Wild 🕷️</h2>
+            <h2>Challenge 2: BAD FEEDBACK - XXE in the Wild </h2>
             
             <h3>Understanding XXE</h3>
             <p>XML External Entity (XXE) injection is a vulnerability that allows attackers to:</p>
@@ -149,9 +150,9 @@ def solve_nitro():
                 <p class="text-yellow-800 dark:text-yellow-200">Always disable external entity processing in XML parsers. Use secure parser configurations and consider using JSON instead, which doesn't suffer from entity expansion issues.</p>
             </div>
 
-            <hr class="my-12">
+            <hr class="my-12 border-0 h-px bg-gray-400 dark:bg-gray-500">
 
-            <h2>Challenge 3: Triangle - Type Juggling Breaks MFA 🔺</h2>
+            <h2>Challenge 3: Triangle - Type Juggling Breaks MFA </h2>
             
             <h3>The Fatal Flaw</h3>
             <p>Examining the OTP verification function revealed a critical vulnerability:</p>
@@ -171,13 +172,13 @@ def solve_nitro():
             
             <div class="grid md:grid-cols-2 gap-4 my-6">
                 <div class="bg-red-50 p-4 rounded-lg dark:bg-gray-800">
-                    <p class="font-semibold text-red-900 dark:text-red-300 mb-2">❌ Vulnerable Flow</p>
+                    <p class="font-semibold text-red-900 dark:text-red-300 mb-2">Vulnerable Flow</p>
                     <pre class="text-sm"><code>$otp = true;  // Boolean
 is_string($otp)  // FALSE  
 verify_key()  // Returns TRUE!</code></pre>
                 </div>
                 <div class="bg-green-50 p-4 rounded-lg dark:bg-gray-800">
-                    <p class="font-semibold text-green-900 dark:text-green-300 mb-2">✅ Intended Flow</p>
+                    <p class="font-semibold text-green-900 dark:text-green-300 mb-2">Intended Flow</p>
                     <pre class="text-sm"><code>$otp = "123456";  // String
 is_string($otp)  // TRUE
 verify_key()  // TOTP validation</code></pre>
@@ -194,12 +195,12 @@ verify_key()  // TOTP validation</code></pre>
     "otp2": true,
     "otp3": true
   }'</code></pre>
-
+</br>
             <p><strong>Result:</strong> Complete MFA bypass achieved without generating a single valid OTP!</p>
 
-            <hr class="my-12">
+            <hr class="my-12 border-0 h-px bg-gray-400 dark:bg-gray-500">
 
-            <h2>Challenge 4: Strike Bank - Mobile Security Nightmare 🏦</h2>
+            <h2>Challenge 4: Strike Bank - Mobile Security Nightmare</h2>
             
             <h3>Deep Dive: strings.xml Analysis</h3>
             <p>The file <code>resources/res/values/strings.xml</code> contained sensitive information:</p>
@@ -234,7 +235,7 @@ verify_key()  // TOTP validation</code></pre>
             <h3>Decoding the JWT Secret</h3>
             <pre class="bg-gray-900 text-green-400 p-4 rounded-lg overflow-x-auto"><code>$ echo "c3RyIWszYjRua0AxMDA5JXN1cDNyIXMzY3IzNw==" | base64 -d
 str!k3b4nk@1009%sup3r!s3cr3t</code></pre>
-
+</br>
             <p class="font-bold text-lg text-red-600 dark:text-red-400">This is the master signing key for all JWT tokens in the application.</p>
 
             <h3>Crafting the Exploit</h3>
@@ -265,9 +266,10 @@ print(f"Forged JWT: {token}")</code></pre>
                 </ul>
             </div>
 
-            <p><strong>Flag captured:</strong> <code>ClOuDsEk_ReSeArCH_tEaM_CTF_2025{ccf62117a030691b1ac7013fca4fb685}</code></p>
+            <p><strong>Flag captured:</strong></p>
+            <p class="overflow-x-auto"> <code>ClOuDsEk_ReSeArCH_tEaM_CTF_2025{ccf62117a030691b1ac7013fca4fb685}</code> </p>
 
-            <hr class="my-12">
+            <hr class="my-12 border-0 h-px bg-gray-400 dark:bg-gray-500">
 
             <h2>Conclusion: Lessons from the Trenches</h2>
             
