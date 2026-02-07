@@ -260,7 +260,7 @@ def contact():
     """Contact page"""
     contact_info = {
         'email': 'abishek.techy@gmail.com',
-        'phone': '+91 6380138198',
+        'ghub':'Abishek-Kumar-GHub',
         'location': 'Bengaluru, Karnataka, IN',
         'linkedin': 'https://www.linkedin.com/in/abishek--kumar/',
         'github': 'https://github.com/Abishek-Kumar-GHub',
